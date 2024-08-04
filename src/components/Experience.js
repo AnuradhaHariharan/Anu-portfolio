@@ -43,43 +43,43 @@ class Experience extends React.Component {
           <div className="experience-column tech-stack">
             <div className="tech-stack-row">
               <div className="tech-stack-item">
-                <img src="/assets/icons8-sass-avatar.svg" alt="Sass" />
+                <img src={`${process.env.PUBLIC_URL}/assets/icons8-sass-avatar.svg`} alt="Sass" />
                 <div className="tech-stack-name">Sass</div>
               </div>
               <div className="tech-stack-item">
-                <img src="/assets/icons8-javascript.svg" alt="JavaScript" />
+                <img src={`${process.env.PUBLIC_URL}/assets/icons8-javascript.svg`} alt="JavaScript" />
                 <div className="tech-stack-name">JavaScript</div>
               </div>
               <div className="tech-stack-item">
-                <img src="/assets/icons8-html5.svg" alt="HTML5" />
+                <img src={`${process.env.PUBLIC_URL}/assets/icons8-html5.svg`} alt="HTML5" />
                 <div className="tech-stack-name">HTML5</div>
               </div>
             </div>
             <div className="tech-stack-row">
               <div className="tech-stack-item">
-                <img src="/assets/icons8-java.svg" alt="Java" />
+                <img  src={`${process.env.PUBLIC_URL}/assets/icons8-java.svg`}  alt="Java" />
                 <div className="tech-stack-name">Java</div>
               </div>
               <div className="tech-stack-item">
-                <img src="/assets/icons8-spring-boot.svg" alt="Spring Boot" />
+                <img  src={`${process.env.PUBLIC_URL}/assets/icons8-java.svg`}  alt="Spring Boot" />
                 <div className="tech-stack-name">Spring Boot</div>
               </div>
               <div className="tech-stack-item">
-                <img src="/assets/logo-mysql-170x115.png" alt="MySQL" />
+                <img src={`${process.env.PUBLIC_URL}/assets/logo-mysql-170x115.png`}  alt="MySQL" />
                 <div className="tech-stack-name">MySQL</div>
               </div>
             </div>
             <div className="tech-stack-row">
               <div className="tech-stack-item">
-                <img src="/assets/react.png" alt="React" />
+                <img src={`${process.env.PUBLIC_URL}/assets/react.png`} alt="React" />
                 <div className="tech-stack-name">React</div>
               </div>
               <div className="tech-stack-item">
-                <img src="/assets/icons8-css3.svg" alt="CSS3" />
+                <img src={`${process.env.PUBLIC_URL}/assets/icons8-css3.svg`} alt="CSS3" />
                 <div className="tech-stack-name">CSS3</div>
               </div>
               <div className="tech-stack-item">
-                <img src="/assets/icons8-webpack.svg" alt="Webpack" />
+                <img src={`${process.env.PUBLIC_URL}/assets/icons8-webpack.svg`} alt="Webpack" />
                 <div className="tech-stack-name">Webpack</div>
               </div>
             </div>

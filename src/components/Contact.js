@@ -107,7 +107,7 @@ function Contact() {
                         </div>
                         <button type="submit" className="submit-button" disabled={state.submitting}>
                             Hit me up
-                            <img src="/assets/rocket.png" alt="Rocket Icon" className="rocket-icon" />
+                            <img src={`${process.env.PUBLIC_URL}/assets/rocket.png`} alt="Rocket Icon" className="rocket-icon" />
                         </button>
                     </form>
                 </div>

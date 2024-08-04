@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function ImageComponent() {
   const imageStyle = {
     height: '100%',
@@ -10,8 +11,8 @@ function ImageComponent() {
   return (
     <div>
       <img
-        src="/assets/me.jpg" // Replace with your image source
-        alt="Sample"
+        src={`${process.env.PUBLIC_URL}/assets/me.jpg`} alt="My Image"// Replace with your image source
+        alt="me"
         style={imageStyle}
       />
     </div>
