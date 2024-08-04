@@ -11,7 +11,7 @@ const NavBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Define section IDs and check if the scroll position is within any section
+      // Define section IDs
       const sections = ["#intro", "#projects", "#skills", "#contact"];
       const currentScroll = window.scrollY + window.innerHeight / 2;
 
@@ -27,7 +27,11 @@ const NavBar = () => {
         }
       });
 
-      setVisible(isVisible || location.pathname !== "/");
+      // Ensure navbar is visible on root path and when in any section
+      setVisible(isVisible || location.pathname === "/");
+
+      // Debugging
+      console.log("Scroll position:", currentScroll, "Section visibility:", isVisible);
     };
 
     window.addEventListener("scroll", handleScroll);
