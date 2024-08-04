@@ -10,7 +10,7 @@ function ImageComponent() {
   return (
     <div>
       <img
-        src="/assets/me.JPG" // Replace with your image source
+        src="/assets/me.jpg" // Replace with your image source
         alt="Sample"
         style={imageStyle}
       />
