@@ -1,0 +1,210 @@
+#intro {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  min-height: 100vh;
+  margin-bottom: 100px;
+}
+
+.image-container { 
+  width: 50%;
+  height: 100vh;
+}
+
+.image {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.typist-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+}
+
+.Typist {
+  color: var(--lightest-slate);
+  text-align: justify;
+  font-size: 4rem;
+}
+
+.Typist .Cursor--blinking {
+  color: var(--green-bright);
+  padding-left: 4px;
+}
+
+.intro-title {
+  font-family: "NTR", sans-serif;
+  font-size: 4rem;
+}
+
+.intro-name {
+  font-family: "NTR", sans-serif;
+  color: var(--green-bright);
+  font-weight: medium;
+  font-size: 55px;
+}
+
+.intro-subtitle {
+  font-family: "NTR", sans-serif;
+  color: var(--slate);
+  font-weight: 300;
+  font-size: 1.3rem;
+  text-align: justify;
+}
+
+.intro-desc {
+  color: var(--slate);
+  font-family: "NTR", sans-serif;
+  font-size: 22px;
+  text-align: center;
+  max-width: 600px;
+  padding-bottom: 50px;
+}
+
+.intro-contact {
+  font-size: 22px;
+  font-weight: bolder;
+  font-family: "NTR", sans-serif;
+  align-self: center;
+  padding: 10px 30px;
+  cursor: pointer;
+  border: 1px solid var(--green-bright);
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.intro-contact:hover {
+  background-color: var(--lightest-navy);
+}
+
+b {
+  font-size: 17px;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 1024px) {
+  #intro {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* Add padding for better spacing */
+    margin-bottom: 50px; /* Adjust margin for smaller screens */
+  }
+
+  .image-container,
+  .typist-container {
+    width: 100%;
+    height: auto; /* Adjust height for better fit */
+  }
+
+  .intro-title {
+    font-size: 3rem; /* Adjust font size for medium screens */
+  }
+
+  .intro-name {
+    font-size: 3rem;
+  }
+
+  .Typist {
+    font-size: 2.5rem;
+  }
+
+  .intro-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .intro-desc {
+    font-size: 20px;
+    max-width: 90%; /* Use percentage for better fit */
+    padding-bottom: 30px;
+  }
+
+  .intro-contact {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #intro {
+    min-height: unset;
+    padding: 20px; /* Adjust padding for small screens */
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .image-container,
+  .typist-container {
+    width: 100%;
+    height: auto; /* Remove fixed height */
+  }
+
+  .intro-title {
+    font-size: 2.5rem; /* Smaller font size for small screens */
+  }
+
+  .intro-name {
+    font-size: 1.8rem;
+  }
+  .typist-container {
+    padding: 1.7rem;
+  }
+
+  .Typist {
+    font-size: 1.8rem;
+  }
+
+  .intro-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .intro-desc {
+    font-size: 16px;
+    max-width: 90%; /* Adjust width for small screens */
+    padding-bottom: 20px;
+  }
+
+  .intro-contact {
+    font-size: 18px;
+    padding: 8px 20px; /* Adjust padding for small screens */
+  }
+}
+
+.social-icons {
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+}
+
+.social-icons a {
+  margin: 10px 0;
+  font-size: 30px;
+  transition: transform 0.3s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.3);
+}
+
+.icon-linkedin:hover {
+  color: #0077b5; /* LinkedIn's official color */
+}
+
+.icon-github:hover {
+  color: #333; /* GitHub's official color */
+}
+
+.icon-instagram:hover {
+  color: #e4405f; /* Instagram's official color */
+}

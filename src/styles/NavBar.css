@@ -1,0 +1,48 @@
+.navbar {
+    background-color: #00000080;
+    color: var(--lightest-slate);
+    font-family: 'NTR';
+    font-weight: bold;
+    width: 91.666667%;
+    top: .3rem !important;
+    border-radius: 40px;
+    margin: 0 auto;
+    position: relative; /* Added to help with alignment */
+  }
+  
+  .navbar .navbar-nav {
+    display: flex;
+    justify-content: center; /* Centering items horizontally */
+  }
+  
+  .navbar-light .navbar-brand {
+    color: var(--lightest-slate) !important;
+  }
+  
+  .navbar-light .navbar-nav .nav-link {
+    color: var(--lightest-slate) !important;
+    font-size: 1.2rem;
+  }
+  
+  .navbar-light .navbar-nav .nav-link:hover {
+    color: var(--green-bright) !important;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .navbar-light .navbar-brand {
+      display: none;
+    }
+    .navbar-light .navbar-nav .hit-me-up {
+        display: block; /* Ensure "Hit me up" link is displayed */
+        margin-top: auto; /* Push to the bottom */
+      }
+    .navbar-light .navbar-nav {
+      display: flex;
+      flex-direction: column; /* Stack items vertically on small screens */
+    }
+    
+    .navbar-light .navbar-nav .nav-link {
+      display: block; /* Ensure links are displayed on small screens */
+    }
+    
+  }

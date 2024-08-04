@@ -1,0 +1,108 @@
+#skills {
+  min-height: 98vh;
+  margin: auto;
+  max-width: 1000px;
+  padding-top: 100px;
+}
+.company {
+  opacity: 0;
+}
+
+/* Job list styles */
+.section-header {
+  text-align: center;
+}
+
+.section-title {
+  font-family: "NTR", sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--lightest-slate);
+}
+
+.experience-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates three equal columns */
+  gap: 20px; /* Space between columns */
+  margin-top: 20px;
+}
+
+.experience-column {
+  padding: 10px;
+}
+
+/* Tech stack images */
+.tech-stack {
+  display: flex;
+  flex-direction: column; /* Stacks rows vertically */
+  gap: 3rem; /* Space between rows */
+}
+
+.tech-stack-row {
+  display: flex;
+  justify-content: space-between; /* Distributes items evenly */
+  gap: 10px; /* Space between items in a row */
+}
+
+.tech-stack-item {
+  display: flex;
+  flex-direction: column; /* Stacks image and name vertically */
+  align-items: center; /* Centers image and name */
+  gap: 5px; /* Space between image and name */
+}
+
+.tech-stack img {
+  width: 3.5rem; /* Adjust as needed */
+  height: 3.5rem; /* Ensures images are uniformly sized */
+  object-fit: contain; /* Ensures images don’t distort */
+}
+
+.tech-stack-name {
+  font-family: "NTR", sans-serif;
+  font-size: 14px;
+  color: var(--slate);
+  text-align: center;
+}
+
+/* Duration and company name columns */
+.duration, .company-name {
+  display: flex;
+  flex-direction: column;
+  gap: 6.2rem; /* Space between rows */
+  font-family: "NTR", sans-serif;
+  font-size: 1.3rem;
+  color: var(--slate);
+  margin-left: 6rem;
+}
+
+/* Optional: Style for tooltip container */
+.tooltip-inner {
+  font-size: .9rem; /* Adjust tooltip font size */
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+  #skills {
+    padding-left: unset;
+    padding-right: unset;
+  }
+.company {
+  opacity: 1;
+  padding: 4.3rem;
+}
+
+  .experience-container {
+    grid-template-columns: 1fr; /* Stack columns vertically on small screens */
+  }
+  .company-name {
+    opacity: 0;
+    display: none;
+  }
+
+  .duration {
+    display: flex;
+    flex-direction: row; /* Keep duration and company name in the same row */
+    gap: 20px; /* Space between duration and company name */
+    margin-left: 0; /* Remove left margin for mobile */
+  }
+}
