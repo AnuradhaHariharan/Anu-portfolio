@@ -32,15 +32,15 @@ class Projects extends React.Component {
       "AirbnbX": {
         desc: "A full-stack application inspired by Airbnb, featuring Express.js for the backend and a sleek front-end design. This project aims to provide a seamless booking experience, allowing users to explore and book various destinations with ease.",
         techStack: "Node.js, Express.js, HTML / CSS",
-        link: "#",
-        open: "https://github.com/AnuradhaHariharan/Airbnb",
+        link: "https://github.com/AnuradhaHariharan/Airbnb",
+        open: "",
         spinner: true // Add spinner key here
       },
       "Anime Games Hub": {
         desc: "A website that combines my passion for anime and learning JavaScript to create interactive anime-themed games. It showcases a blend of anime aesthetics and coding skills.",
         techStack: "HTML, CSS,JavaScript",
-        link: "https://anuradhahariharan.github.io/anime-hub/",
-        open:"#"
+        link: "https://github.com/AnuradhaHariharan/anime-hub",
+        open:"https://anuradhahariharan.github.io/anime-hub/"
       },
       "EcomX": {
         desc: "A backend system designed for an e-commerce website, focusing on managing user interactions and product data to deliver a smooth and efficient shopping experience.",
@@ -57,7 +57,7 @@ class Projects extends React.Component {
       "": {
         desc: "Loading..",
         techStack: "",
-        link: "",
+        link: "https://github.com/AnuradhaHariharan",
         open: "",
         spinner:true
       }
