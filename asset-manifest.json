@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Anu-portfolio/static/css/main.bd2d534b.css",
+    "main.js": "/Anu-portfolio/static/js/main.811b3f11.js",
+    "index.html": "/Anu-portfolio/index.html",
+    "main.bd2d534b.css.map": "/Anu-portfolio/static/css/main.bd2d534b.css.map",
+    "main.811b3f11.js.map": "/Anu-portfolio/static/js/main.811b3f11.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd2d534b.css",
+    "static/js/main.811b3f11.js"
+  ]
+}
