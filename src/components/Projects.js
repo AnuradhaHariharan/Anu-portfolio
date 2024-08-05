@@ -39,7 +39,7 @@ class Projects extends React.Component {
       "Anime Games Hub": {
         desc: "A website that combines my passion for anime and learning JavaScript to create interactive anime-themed games. It showcases a blend of anime aesthetics and coding skills.",
         techStack: "HTML, CSS,JavaScript",
-        link: "#",
+        link: "https://anuradhahariharan.github.io/anime-hub/",
         open:"#"
       },
       "EcomX": {
