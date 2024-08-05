@@ -121,7 +121,7 @@ function FrontPage() {
     };
 
     const handleEnterClick = () => {
-        window.location.href = '/portfolio/#intro'; // Redirect to the portfolio section
+        window.location.href = '/Anu-portfolio/#intro'; // Redirect to the portfolio section
     };
 
     return (
