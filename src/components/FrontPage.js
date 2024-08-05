@@ -109,7 +109,19 @@ function MatrixBackground({ destroyMode }) {
 
 function FrontPage() {
     const [destroyMode, setDestroyMode] = useState(false);
-   
+
+    useEffect(() => {
+        document.body.style.overflow = 'hidden'; // Disable scrolling on initial load
+        document.body.style.position = 'fixed'; // Lock the body in place
+        document.body.style.width = '100%'; // Ensure width is 100%
+
+        return () => {
+            document.body.style.overflow = ''; // Reset overflow on component unmount
+            document.body.style.position = ''; // Reset position
+            document.body.style.width = ''; // Reset width
+        };
+    }, []);
+
     const handleHover = (event) => {
         if (destroyMode) {
             event.target.style.display = 'none';
@@ -121,6 +133,9 @@ function FrontPage() {
     };
 
     const handleEnterClick = () => {
+        document.body.style.overflow = ''; // Enable scrolling
+        document.body.style.position = ''; // Reset position
+        document.body.style.width = ''; // Reset width
         window.location.href = `${process.env.PUBLIC_URL}/#intro`; // Redirect to the portfolio section
     };
 

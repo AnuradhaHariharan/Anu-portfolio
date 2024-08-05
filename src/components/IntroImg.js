@@ -11,7 +11,7 @@ function ImageComponent() {
   return (
     <div>
       <img
-        src={`${process.env.PUBLIC_URL}/assets/me.jpg`} alt="My Image"// Replace with your image source
+        src={`${process.env.PUBLIC_URL}/assets/me.jpg`} // Replace with your image source
         alt="me"
         style={imageStyle}
       />
