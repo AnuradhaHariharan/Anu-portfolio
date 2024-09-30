@@ -57,7 +57,7 @@ const NavBar = () => {
               </Nav>
               <Nav className="ml-auto">
                 <Nav.Link
-                  href="https://drive.google.com/file/d/17LIS4dyxzJTm7MU1RX-6mh5gPIcKA0xV/view?usp=sharing"
+                  href="https://drive.google.com/file/d/198E1-Tjevc5g3T_Qo6elr_EjCL_ZWTIK/view?usp=sharing"
                   className="hit-me-up"
                 >
                   Resume

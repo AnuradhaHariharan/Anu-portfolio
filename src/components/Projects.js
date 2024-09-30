@@ -29,6 +29,25 @@ class Projects extends React.Component {
         link: "https://github.com/AnuradhaHariharan/wanderlust_project/tree/master",
         open: "https://anuradhahariharan.github.io/wanderlust_project/"
       },
+      "Tomato": {
+        desc: "Developed a full-stack food delivery application with user authentication, Stripe integration for payments, and an admin panel to manage food items and order statuses.",
+        techStack: "MongoDB, Express.js, React, Node.js",
+        link: "https://github.com/AnuradhaHariharan/food-del",
+        open: "https://food-del-1-o79x.onrender.com/"
+      },
+      "Tomato Admin Panel": {
+        desc: "Created an admin panel for the food delivery app where admins can add and delete food items, view user order details, and change order statuses.",
+        techStack: "MongoDB, Express.js, React, Node.js",
+        link: "https://github.com/AnuradhaHariharan/food-del",
+        open:"https://food-del-admin-fouz.onrender.com/orders"
+        
+      },
+      "Anime Games Hub": {
+        desc: "A website that combines my passion for anime and learning JavaScript to create interactive anime-themed games. It showcases a blend of anime aesthetics and coding skills.",
+        techStack: "HTML, CSS,JavaScript",
+        link: "https://github.com/AnuradhaHariharan/anime-hub",
+        open: "https://anuradhahariharan.github.io/anime-hub/"
+      },
       "AirbnbX": {
         desc: "A full-stack application inspired by Airbnb, featuring Express.js for the backend and a sleek front-end design. This project aims to provide a seamless booking experience, allowing users to explore and book various destinations with ease.",
         techStack: "Node.js, Express.js, HTML / CSS",
@@ -36,30 +55,11 @@ class Projects extends React.Component {
         open: "",
         spinner: true // Add spinner key here
       },
-      "Anime Games Hub": {
-        desc: "A website that combines my passion for anime and learning JavaScript to create interactive anime-themed games. It showcases a blend of anime aesthetics and coding skills.",
-        techStack: "HTML, CSS,JavaScript",
-        link: "https://github.com/AnuradhaHariharan/anime-hub",
-        open:"https://anuradhahariharan.github.io/anime-hub/"
-      },
       "EcomX": {
         desc: "A backend system designed for an e-commerce website, focusing on managing user interactions and product data to deliver a smooth and efficient shopping experience.",
         techStack: "Java, Spring Boot, MySQL",
         link: "https://github.com/AnuradhaHariharan/e-commerce_website",
-        open:""
-      },
-      "Vaccination Booking System": {
-        desc: "Designed a vaccination booking system with a monolithic architecture.",
-        techStack: "Java, Spring boot, MySQL , Hibernate",
-        link: "https://github.com/AnuradhaHariharan/VaccinationBookingSystem",
         open: ""
-      },
-      "": {
-        desc: "Loading..",
-        techStack: "",
-        link: "https://github.com/AnuradhaHariharan",
-        open: "",
-        spinner:true
       }
     };
 

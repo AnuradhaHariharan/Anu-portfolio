@@ -83,6 +83,20 @@ class Experience extends React.Component {
                 <div className="tech-stack-name">Webpack</div>
               </div>
             </div>
+            <div className="tech-stack-row">
+              <div className="tech-stack-item">
+                <img src={`${process.env.PUBLIC_URL}/assets/mongodb.svg`} alt="React" />
+                <div className="tech-stack-name">MongoDB</div>
+              </div>
+              <div className="tech-stack-item">
+                <img src={`${process.env.PUBLIC_URL}/assets/icons8-express-js.svg`} alt="CSS3" />
+                <div className="tech-stack-name">Express.js</div>
+              </div>
+              <div className="tech-stack-item">
+                <img src={`${process.env.PUBLIC_URL}/assets/icons8-node-js.svg`} alt="Webpack" />
+                <div className="tech-stack-name">Node.js</div>
+              </div>
+            </div>
           </div>
           <div className="experience-column duration">
             <div>May 2024 - July 2024 <span className="company">Fyle</span></div>
