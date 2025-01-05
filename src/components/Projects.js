@@ -76,13 +76,13 @@ class Projects extends React.Component {
         desc: "An efficient and secure portal for students to submit assignments. With user-friendly login and sign-up features, it streamlines the assignment submission process, ensuring seamless tracking and management of submissions.",
         techStack: "MongoDB, Express.js, React, Node.js",
         link: "https://github.com/AnuradhaHariharan/growthX",
-        open: "https://growthx-1-admin.onrender.com/ "
+        open: "https://growthx-1-portal-student.onrender.com/"
       },
       "Submission Desk Admin Panel": {
         desc: "A comprehensive admin panel that allows administrators to view, approve, or reject student assignments, providing easy management and tracking of submissions.",
         techStack: "MongoDB, Express.js, React, Node.js",
         link: "https://github.com/AnuradhaHariharan/growthX",
-        open: " https://growthx-1-portal-student.onrender.com/"
+        open: "https://growthx-1-admin.onrender.com/"
       }
     };
 
