@@ -59,8 +59,9 @@ const Intro = () => {
 
         <FadeInSection>
           <div className="intro-subtitle">
-            Hi! I'm Anuradha, a full-stack developer based in Chennai, India. When I'm not knee-deep in code, I'm either working out or dreaming up my next travel destination. If you're into anime, let’s chat, I’d love to hear your favorite series or debate the best plot twists!
+            Hi! I'm Anuradha, a full-stack developer with a passion for coding. When I'm not knee-deep in code, I'm either working out or dreaming up my next travel destination. If you're into anime, let’s chat, I’d love to hear your favorite series or debate the best plot twists!
           </div>
+
         </FadeInSection>
         <SocialIcons />
       </div>

@@ -149,7 +149,7 @@ function FrontPage() {
                 </h1>
                 <div className="button-group">
                     <button onClick={handleEnterClick} disabled={destroyMode} className='btn btn-one'>Enter</button>
-                    <button onClick={handleDestroyClick} disabled={destroyMode} className='btn btn-two'>Destroy This Website</button>
+                    <button onClick={handleDestroyClick} disabled={destroyMode} className='btn btn-two'>Crash this Website</button>
                 </div>
             </div>
         </div>

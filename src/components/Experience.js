@@ -57,20 +57,6 @@ class Experience extends React.Component {
             </div>
             <div className="tech-stack-row">
               <div className="tech-stack-item">
-                <img  src={`${process.env.PUBLIC_URL}/assets/icons8-java.svg`}  alt="Java" />
-                <div className="tech-stack-name">Java</div>
-              </div>
-              <div className="tech-stack-item">
-                <img  src={`${process.env.PUBLIC_URL}/assets/icons8-java.svg`}  alt="Spring Boot" />
-                <div className="tech-stack-name">Spring Boot</div>
-              </div>
-              <div className="tech-stack-item">
-                <img src={`${process.env.PUBLIC_URL}/assets/logo-mysql-170x115.png`}  alt="MySQL" />
-                <div className="tech-stack-name">MySQL</div>
-              </div>
-            </div>
-            <div className="tech-stack-row">
-              <div className="tech-stack-item">
                 <img src={`${process.env.PUBLIC_URL}/assets/react.png`} alt="React" />
                 <div className="tech-stack-name">React</div>
               </div>
@@ -97,6 +83,20 @@ class Experience extends React.Component {
                 <div className="tech-stack-name">Node.js</div>
               </div>
             </div>
+            <div className="tech-stack-row">
+              <div className="tech-stack-item">
+                <img  src={`${process.env.PUBLIC_URL}/assets/icons8-java.svg`}  alt="Java" />
+                <div className="tech-stack-name">Java</div>
+              </div>
+              <div className="tech-stack-item">
+                <img  src={`${process.env.PUBLIC_URL}/assets/icons8-java.svg`}  alt="Spring Boot" />
+                <div className="tech-stack-name">Spring Boot</div>
+              </div>
+              <div className="tech-stack-item">
+                <img src={`${process.env.PUBLIC_URL}/assets/logo-mysql-170x115.png`}  alt="MySQL" />
+                <div className="tech-stack-name">MySQL</div>
+              </div>
+            </div>
           </div>
           <div className="experience-column duration">
             <div>May 2024 - July 2024 <span className="company">Fyle</span></div>
@@ -106,7 +106,8 @@ class Experience extends React.Component {
           <div className="experience-column company-name">
             <OverlayTrigger
               placement="top"
-              overlay={this.renderTooltip("As a front-end engineering intern, I was instrumental in implementing new pages, enhancing user interfaces, and performing critical troubleshooting to resolve front-end issues. I also contributed to a significant website revamp, which involved refining the overall design and user experience.")}
+              overlay={this.renderTooltip("Increased website performance by 20% through optimization techniques like CSS improvements, Webpack tree-shaking, and lazy loading. Enhanced user engagement with the Chrome extension by 25%, improving satisfaction and reactivating 2 churned accounts.")} 
+
             >
               <div>Fyle</div>
             </OverlayTrigger>

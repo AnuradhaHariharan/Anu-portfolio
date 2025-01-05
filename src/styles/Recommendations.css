@@ -1,0 +1,52 @@
+.recommendations {
+  min-height: 80vh;
+  margin: auto;
+  max-width: 1000px;
+  padding-top: 100px;
+}
+
+.recommendations h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--lightest-slate);
+}
+
+.recommendation-card {
+  width: 100%; /* Make the card take the full width */
+  height: 350px; /* Set a fixed height for the card */
+  padding: 20px;
+  background-color: var(--light-navy);
+  text-align: center;
+  transition: transform 0.3s ease;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the content vertically */
+  align-items: center;
+}
+
+.recommendation-card:hover {
+  transform: translateY(-10px); /* Optional: Add hover effect */
+}
+
+.recommendation-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.recommendation-review {
+  font-style: italic;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: var(--lightest-slate);
+  flex-grow: 1; /* Allow review to grow and take available space */
+}
+
+.recommendation-role {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--lightest-slate);
+}

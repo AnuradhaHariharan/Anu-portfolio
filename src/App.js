@@ -8,17 +8,19 @@ import "./styles/Global.css";
 import "rsuite/dist/styles/rsuite-default.css";
 import Contact from "./components/Contact";
 import FrontPage from "./components/FrontPage";
+import Recommendations from "./components/Recommendations";
+
 
 
 function App() {
   return (
     <div className="App">
-   
-      <div id="content">
+     <div id="content">
         <FrontPage />
         <Intro></Intro>
         <Projects></Projects>
         <Experience></Experience>
+        <Recommendations/>
         <Contact></Contact>
         <Credits></Credits>
       </div>
