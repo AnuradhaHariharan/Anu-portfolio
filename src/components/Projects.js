@@ -54,24 +54,6 @@ class Projects extends React.Component {
         link: "https://github.com/AnuradhaHariharan/e-commerce_website",
         open: "https://anuradhahariharan.github.io/seller-app/"
       },
-      "Wanderlust": {
-        desc: "A travel website where you can book destinations and explore various travel options. This project was created to learn advanced CSS and SCSS techniques.",
-        techStack: "CSS/SCSS",
-        link: "https://github.com/AnuradhaHariharan/wanderlust_project/tree/master",
-        open: "https://anuradhahariharan.github.io/wanderlust_project/"
-      },
-      "EcomX": {
-        desc: "A backend system designed for an e-commerce website, focusing on managing user interactions and product data to deliver a smooth and efficient shopping experience.",
-        techStack: "Java, Spring Boot, MySQL",
-        link: "https://github.com/AnuradhaHariharan/e-commerce_website",
-        open: ""
-      },
-      "Geo Mappy": {
-        desc: "Designed an API that allows clients to measure distance between multiple geo co-ordinates, using the Great Circle Distance algorithm. UI has a drag-drop functionality to mark points on the world map.",
-        techStack: "HTML5,CSS3,JavaScript,DistanceAlgorithms",
-        link: "https://github.com/AnuradhaHariharan/arcgis-measurement-app",
-        open: "https://anuradhahariharan.github.io/arcgis-measurement-app/"
-      },
       "Submission Desk": {
         desc: "An efficient and secure portal for students to submit assignments. With user-friendly login and sign-up features, it streamlines the assignment submission process, ensuring seamless tracking and management of submissions.",
         techStack: "MongoDB, Express.js, React, Node.js",
@@ -83,6 +65,24 @@ class Projects extends React.Component {
         techStack: "MongoDB, Express.js, React, Node.js",
         link: "https://github.com/AnuradhaHariharan/growthX",
         open: "https://growthx-1-admin.onrender.com/"
+      },
+      "Wanderlust": {
+        desc: "A travel website where you can book destinations and explore various travel options. This project was created to learn advanced CSS and SCSS techniques.",
+        techStack: "CSS/SCSS",
+        link: "https://github.com/AnuradhaHariharan/wanderlust_project/tree/master",
+        open: "https://anuradhahariharan.github.io/wanderlust_project/"
+      },
+      "Geo Mappy": {
+        desc: "Designed an API that allows clients to measure distance between multiple geo co-ordinates, using the Great Circle Distance algorithm. UI has a drag-drop functionality to mark points on the world map.",
+        techStack: "HTML5,CSS3,JavaScript,DistanceAlgorithms",
+        link: "https://github.com/AnuradhaHariharan/arcgis-measurement-app",
+        open: "https://anuradhahariharan.github.io/arcgis-measurement-app/"
+      },
+      "EcomX": {
+        desc: "A backend system designed for an e-commerce website, focusing on managing user interactions and product data to deliver a smooth and efficient shopping experience.",
+        techStack: "Java, Spring Boot, MySQL",
+        link: "https://github.com/AnuradhaHariharan/e-commerce_website",
+        open: ""
       }
     };
 
@@ -97,7 +97,7 @@ class Projects extends React.Component {
           <ShiningButton>PROJECTS</ShiningButton>
         </div>
         <div className="section-header">
-          <span className="section-title">Code & Coffee: My Project Gallery &#x2615;👩‍💻</span>
+          <span className="section-title">Projects I've Built 👩‍💻</span>
         </div>
         <div className="project-container">
           <ul className="projects-grid">
@@ -123,9 +123,10 @@ class Projects extends React.Component {
           </ul>
           {/* Load More Button */}
           <div className="shining-button-container">
-          <button className="shining-button" onClick={this.toggleExpand}>
-            {this.state.expanded ? "Show Less" : "Load More"}
-          </button>
+            <button className="show-more" onClick={this.toggleExpand}>
+              {this.state.expanded ? "Show Less ↑" : "Load More ↓"}
+            </button>
+
           </div>
         </div>
       </div>

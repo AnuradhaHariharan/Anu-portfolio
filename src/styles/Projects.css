@@ -141,6 +141,12 @@
 .carousel-indicators .active {
   background-color: var(--green-bright);
 }
+.show-more {
+  color: var(--lightest-slate);
+  background-color: transparent;
+  border-bottom: 1px solid var(--lightest-slate);
+  font-size: 1.1rem;
+}
 
 @media (max-width: 600px) {
   #projects {

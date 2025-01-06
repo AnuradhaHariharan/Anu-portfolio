@@ -152,6 +152,9 @@ b {
   .intro-name {
     font-size: 1.8rem;
   }
+  .image {
+    height: 50vh;
+  }
   .typist-container {
     padding: 1.7rem;
   }
