@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "../styles/Experience.css";
+import FadeInSection from "./FadeInSection";
 
 const Experience = () => {
   const experienceRef = useRef(null);
@@ -43,9 +44,12 @@ const Experience = () => {
 
   return (
     <div id="skills">
+       <FadeInSection>
       <div className="section-header">
         <span className="section-title">My Toolkit..👩‍💻</span>
       </div>
+      </FadeInSection>
+      <FadeInSection>
       <div className="experience-container" ref={experienceRef}>
         <div className="experience-column">
           {skills.map((skill, index) => (
@@ -58,6 +62,7 @@ const Experience = () => {
           ))}
         </div>
       </div>
+      </FadeInSection>
     </div>
   );
 };

@@ -7,13 +7,12 @@
 
 .recommendations h2 {
   font-size: 2rem;
-  margin-bottom: 1rem;
   color: var(--lightest-slate);
 }
 
 .recommendation-card {
   width: 100%; /* Make the card take the full width */
-  height: 22rem; /* Set a fixed height for the card */
+  height: 26rem; /* Set a fixed height for the card */
   padding: 20px;
   background-color: var(--light-navy);
   text-align: center;
@@ -90,14 +89,13 @@
 
   .recommendation-card {
     margin-bottom: 20px; /* Space out cards vertically */
-    height: 28.3rem;
+    height: 29rem;
   }
 
   .recommendation-photo {
     width: 70px;
     height: 70px;
   }
-
   .recommendation-review {
     font-size: 0.9rem; /* Smaller font size for reviews */
   }

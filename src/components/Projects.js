@@ -93,9 +93,11 @@ class Projects extends React.Component {
 
     return (
       <div id="projects">
+        <FadeInSection>
         <div className="shining-button-container">
           <ShiningButton>PROJECTS</ShiningButton>
         </div>
+        </FadeInSection>
         <div className="section-header">
           <span className="section-title">Projects I've Built 👩‍💻</span>
         </div>

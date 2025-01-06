@@ -16,13 +16,6 @@ const recommendationsData = [
     company: "ANZ",
     photo: `${process.env.PUBLIC_URL}/assets/priya.png`,
     review: "I’ve had the pleasure of working with Anuradha at Fyle, and her strong grasp of frontend technologies is truly commendable. She has an excellent ability to translate complex requirements into seamless user experiences. Beyond her technical expertise, Anuradha is a fantastic team player, always collaborative and supportive, making her a valuable asset to any team."
-  },
-  {
-    name: "Mark Lee",
-    role: "UX Designer",
-    company: "Design Hub",
-    photo: "https://via.placeholder.com/150",
-    review: "Creative, hardworking, and always open to feedback..."
   }
 ];
 
@@ -76,7 +69,7 @@ const Recommendations = () => {
         )}
         <div className="section-header">
           <span className="section-title">
-          What My Exes (colleagues) Have to Say 😉
+            What My Exes (colleagues) Have to Say 😉
           </span>
 
         </div>
@@ -86,6 +79,9 @@ const Recommendations = () => {
             alt={recommendationsData[currentIndex].name}
             className="recommendation-photo"
           />
+          <h2 className="recommendation-name">
+            {recommendationsData[currentIndex].name}
+          </h2>
           <p className="recommendation-review">
             "{recommendationsData[currentIndex].review}"
           </p>
