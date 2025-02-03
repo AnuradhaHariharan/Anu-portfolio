@@ -3,11 +3,11 @@ import "../styles/Contact.css";
 import FadeInSection from "./FadeInSection";
 import { FaPhone, FaEnvelope } from 'react-icons/fa';
 import { useForm, ValidationError } from '@formspree/react';
-import Modal from './Modal'; // Import the Modal component
+import Modal from './Modal'; 
 import ShiningButton from './Badge';
 
 function Contact() {
-    const [state, handleSubmit] = useForm("xldrbgpo"); // Replace with your Formspree ID
+    const [state, handleSubmit] = useForm("xldrbgpo"); 
     const [modalOpen, setModalOpen] = useState(false); // Track modal visibility
     const [formState, setFormState] = useState({
         name: "",
@@ -25,10 +25,6 @@ function Contact() {
             setFormState({ name: "", email: "", message: "" }); // Clear form fields
             setModalOpen(true); // Open the modal on successful submission
         });
-    };
-
-    const closeModal = () => {
-        setModalOpen(false);
     };
 
     return (
@@ -64,6 +60,7 @@ function Contact() {
                                 onChange={handleChange}
                                 placeholder="Name"
                                 className="form-group__input"
+                                required="true"
                             />
                             <label htmlFor="name" className="form-group__label">Name</label>
                             <ValidationError
@@ -81,6 +78,7 @@ function Contact() {
                                 onChange={handleChange}
                                 placeholder="Email"
                                 className="form-group__input"
+                                required="true"
                             />
                             <label htmlFor="email" className="form-group__label">Email</label>
                             <ValidationError
@@ -97,6 +95,7 @@ function Contact() {
                                 onChange={handleChange}
                                 placeholder="Message"
                                 className="form-group__input"
+                                required="true"
                             />
                             <label htmlFor="message" className="form-group__label">Message</label>
                             <ValidationError
