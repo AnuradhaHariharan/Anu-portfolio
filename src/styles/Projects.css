@@ -1,179 +1,210 @@
-#projects {
-  margin: auto;
-  padding-top: 100px;
-  max-width: 1000px;
+/* Projects — polished cards grid, neon accents, accessible focus, responsive */
+
+/* ------------ Section shell ------------ */
+#projects,
+.projects-section{
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+  max-width: 1200px;
   min-height: 50vh;
+  background: transparent;
 }
 
-.projects-grid {
+/* header */
+.projects-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 14px;
+}
+.projects-title{
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+  color: var(--lightest-slate, #e6f1ff);
+  text-shadow: 0 2px 0 rgba(0,0,0,.55);
+}
+
+/* ------------ Grid ------------ */
+.projects-grid{
   display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-gap: 10px;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 24px;
+  margin: 42px 0; /* breathing room above Load More */
 }
 
-@media (max-width: 1080px) {
-  .projects-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
+@media (max-width: 1080px){
+  .projects-grid{ grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+}
+@media (max-width: 680px){
+  .projects-grid{ grid-template-columns: 1fr; gap: 20px; padding: 0 6px; }
 }
 
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-}
-
-.projects-card {
+/* ------------ Card (fixed footer) ------------ */
+.projects-card{
   position: relative;
-  cursor: default;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 2rem 1.75rem;
-  background-color: var(--light-navy);
+  min-height: 260px; /* prevent tiny cards */
+  padding: 1.5rem 1.5rem 1.25rem;
+  background: var(--light-navy, #111316);
+  border: 1px solid rgba(255,255,255,.06);
   border-radius: 16px;
-  transition: transform 0.3s, background-color 0.3s;
+  box-shadow: 0 14px 28px rgba(0,0,0,.35);
+  transition:
+    transform .25s cubic-bezier(.22,1,.36,1),
+    box-shadow .25s cubic-bezier(.22,1,.36,1),
+    border-color .25s cubic-bezier(.22,1,.36,1),
+    background-color .25s cubic-bezier(.22,1,.36,1);
+}
+.projects-card:hover,
+.projects-card:focus-within{
+  transform: translateY(-6px);
+  box-shadow: 0 22px 44px rgba(0,0,0,.45), 0 10px 26px rgba(0,255,120,.15);
+  border-color: rgba(0,255,120,.35);
+  background-color: var(--lightest-navy, #14181c);
 }
 
-.projects-card:hover {
-  transform: translateY(-7px);
-  background-color: var(--lightest-navy);
-}
-
-.card-header {
-  margin-top: -20px;
+/* header inside card (folder icon + external links) */
+.card-header{
   display: flex;
-  padding: 1.25em 0;
-  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  padding: .25rem 0 1rem;
+  margin: -.25rem 0 .25rem;
   border-bottom: none;
 }
+.folder-icon{
+  color: var(--green-bright, #00ff66);
+  filter: drop-shadow(0 2px 6px rgba(0,255,120,.25));
+  transition: transform .2s ease;
+}
+.projects-card:hover .folder-icon{ transform: translateY(-1px) scale(1.02); }
 
-.folder-icon {
-  color: var(--green-bright);
+/* ExternalLinks icons */
+.github-icon,
+.open-icon{
+  color: var(--lightest-slate, #e6f1ff);
+  transition: color .15s ease, transform .15s ease;
+}
+.github-icon:hover,
+.open-icon:hover{
+  color: var(--green-bright, #00ff66);
+  transform: translateY(-1px);
+}
+.open-icon{ margin-left: 10px; }
+.card-header a:focus-visible{
+  outline: 2px solid var(--green-bright, #00ff66);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-.github-icon {
-  margin-top: 6px;
+/* title + description */
+.card-title{
+  font-family: "NTR", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--lightest-slate, #e6f1ff);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: .01em;
+  margin: 0 0 .35rem 0;
+}
+.projects-card:hover .card-title,
+.projects-card:focus-within .card-title{
+  color: var(--green-bright, #00ff66);
+  text-shadow: 0 2px 0 rgba(0,0,0,.45);
 }
 
-.github-icon:hover {
-  color: var(--green-bright);
-}
-
-.open-icon {
-  margin-left: 10px;
-}
-
-.card-title {
-  font-family: "NTR", sans-serif;
-  color: var(--lightest-slate);
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.card-desc {
-  font-family: "NTR", sans-serif;
-  color: var(--slate);
-  font-size: 18px;
-  padding-bottom: 40px;
-}
-
-.card-tech {
-  font-family: "NTR", sans-serif;
-  color: var(--slate);
+.card-desc{
+  font-family: "NTR", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--slate, rgba(255,255,255,.72));
   font-size: 16px;
-  position: absolute;
-  bottom: 12px;
+  line-height: 1.65;
+  margin: 0 0 .75rem 0;
+
+  /* keep cards aligned while allowing grow */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  /* make the footer sit at the bottom */
+  flex: 1 1 auto;
 }
 
-/* Spotlight carousel */
-.carousel.slide {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding-bottom: 60px;
+/* footer chips — now normal flow (no absolute) */
+.card-footer{
+  margin-top: auto;               /* push footer to bottom */
+  padding-top: .75rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.tech-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tech-chip{
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0,255,120,.10);
+  border: 1px solid rgba(0,255,120,.25);
+  color: #c8ffe6;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .02em;
 }
 
-.carousel-inner {
-  height: 500px;
-  border-radius: 24px;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+/* ------------ Load More button ------------ */
+.projects-cta{
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+}
+.btn-more{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--lightest-slate, #e6f1ff);
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--lightest-slate, #e6f1ff);
+  font-size: 1rem;
+  padding: 10px 6px 6px;
+  cursor: pointer;
+  transition: color .15s ease, border-color .15s ease, transform .15s ease;
+}
+.btn-more:hover{
+  color: var(--green-bright, #00ff66);
+  border-color: var(--green-bright, #00ff66);
+  transform: translateY(-2px);
+}
+.btn-more:focus-visible{
+  outline: 2px solid var(--green-bright, #00ff66);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-.carousel-inner:hover {
-  transform: scale(1.01);
-}
-
-.carousel img {
-  object-fit: contain;
-  height: 100%;
-  opacity: 0.5;
-}
-
-.carousel-caption {
-  font-family: "NTR", sans-serif;
-  max-width: 500px;
-  right: unset !important;
-  left: 25% !important;
-  user-select: none;
-}
-
-.carousel-caption h3 {
-  font-size: 38px;
-  font-weight: bold;
-  color: var(--lightest-slate);
-}
-
-.carousel-caption p {
-  font-family: "NTR", sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-  color: var(--lightest-slate);
-}
-
-.carousel-caption p.techStack {
-  font-family: "NTR", sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--green-bright);
-}
-
-.carousel-indicators .active {
-  background-color: var(--green-bright);
-}
-.show-more {
-  color: var(--lightest-slate);
-  background-color: transparent;
-  border-bottom: 1px solid var(--lightest-slate);
-  font-size: 1.1rem;
-}
-
-@media (max-width: 600px) {
-  #projects {
-    height: unset;
-    padding-left: unset;
-    padding-right: unset;
+/* ------------ Small screens ------------ */
+@media (max-width: 600px){
+  #projects,
+  .projects-section{
+    padding: 64px 0 56px; /* extra room for the button */
   }
-  
-  .projects-grid {
-    grid-template-columns: 1fr; /* Stack projects in a single column on small screens */
-    grid-gap: 20px; /* Increase gap for better spacing */
-    padding: 1.2rem;
-  }
+  .projects-title{ font-size: 28px; }
+  .card-title{ font-size: 20px; }
+  .card-desc{ font-size: 15px; -webkit-line-clamp: 5; }
+  .tech-chip{ font-size: 11px; padding: 5px 8px; }
+}
 
-  .carousel {
-    display: none;
-  }
-  
-  .card-title {
-    font-size: 20px; /* Adjust font size for small screens */
-  }
-  
-  .card-desc {
-    font-size: 16px; /* Adjust font size for small screens */
-  }
-  
-  .card-tech {
-    font-size: 14px; /* Adjust font size for small screens */
-  }
+/* ------------ Reduced motion ------------ */
+@media (prefers-reduced-motion: reduce){
+  .projects-card,
+  .btn-more{ transition: none !important; }
 }

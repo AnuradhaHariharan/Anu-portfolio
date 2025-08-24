@@ -1,71 +1,56 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/Intro.css";
-import Typist from "react-typist";
-import "react-typist/dist/Typist.css";
 import FadeInSection from "./FadeInSection";
 import SocialIcons from "./SocialIcons.js";
 import ImageComponent from "./IntroImg.js";
-import ShiningButton from "./Badge.js";
 import NavBar from "./NavBar.js";
 
 const Intro = () => {
-  const [isInView, setIsInView] = useState(false);
-  const introRef = useRef(null);
-  const location = useLocation();
-
-  const checkIfInView = () => {
-    if (introRef.current) {
-      const rect = introRef.current.getBoundingClientRect();
-      const viewHeight = window.innerHeight;
-      const inView = rect.top <= viewHeight && rect.bottom >= 0;
-      console.log(`Rect top: ${rect.top}, Rect bottom: ${rect.bottom}, View height: ${viewHeight}, In view: ${inView}`);
-      setIsInView(inView);
-    }
-  };
-
-  useEffect(() => {
-    const handleScroll = () => checkIfInView();
-    window.addEventListener("scroll", handleScroll);
-    checkIfInView(); // Initial check
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [location]);
+  useLocation();
 
   return (
-    <div id="intro" ref={introRef}>
+    <section id="intro" className="intro-section">
       <NavBar />
-      <div className="image-container">
-        <ImageComponent />
-      </div>
-      <div className="typist-container">
-        <ShiningButton>ABOUT</ShiningButton>
 
-        {isInView && (
-          <Typist avgTypingDelay={100}>
-            <span className="intro-name">Developer👩‍💻</span>
-            <Typist.Backspace count={15} delay={600} />
-            <span className="intro-name">Problem Solver &#x1F609;</span>
-            <Typist.Backspace count={20} delay={600} />
-            <span className="intro-name">Globetrotter🌍✈️</span>
-            <Typist.Backspace count={17} delay={600} />
-            <span className="intro-name">Fitness Fanatic💪</span>
-            <Typist.Backspace count={19} delay={600} />
-            <span className="intro-name">Full Stack Developer👩‍💻</span>
-          </Typist>
-        )}
+      {/* fixed left rail */}
+      <SocialIcons />
 
-        <FadeInSection>
-          <div className="intro-subtitle">
-            Hi! I'm Anuradha, a full-stack developer with a passion for coding. When I'm not knee-deep in code, I'm either working out or dreaming up my next travel destination. If you're into anime, let’s chat, I’d love to hear your favorite series or debate the best plot twists!
+      <FadeInSection>
+      <h1 className="intro-lead">
+        I believe in a <span className="lead-accent">user-centered design</span> approach, ensuring
+        that every project I work on is tailored to meet the specific needs of its users.
+      </h1>
+      </FadeInSection>
+
+      {/* BELOW: image left | content right */}
+      <div className="intro-grid">
+        {/* LEFT: Image */}
+        <div className="intro-col intro-media">
+          <figure className="image-frame">
+            <ImageComponent />
+          </figure>
+        </div>
+
+        {/* RIGHT: Copy */}
+        <div className="intro-col intro-copy">
+          <div className="intro-copy-inner">
+            <FadeInSection>
+              <p className="intro-kicker">This is me.</p>
+              <h2 className="intro-heading">Hi, I’m Anuradha.</h2>
+
+              <p className="intro-paragraph">
+              I’m a frontend developer focused on performance, accessibility, and clean UI. I turn ideas into interfaces that feel fast and intuitive across devices. I translate product goals into scalable components, collaborate closely with design, and ship with a focus on usability, maintainability, and measurable impact
+              </p>
+              <div className="cta-row">
+            <a className="btn btn-accent" href="#contact">HIRE ME</a>
           </div>
 
-        </FadeInSection>
-        <SocialIcons />
+            </FadeInSection>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

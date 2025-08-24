@@ -86,8 +86,7 @@ const JobList = () => {
       jobTitle: "Web Developer Intern @",
       duration: "May 2024 - July 2024",
       desc: [
-        "Led development of end-to-end region build automation across Route 53 (AWS's DNS web service).  This enabled the launch of customer-facing global services in new regions within a day, a significant reduction from the previous time-frame of a month.",
-        "Re-built Route 53's core domain management and DNS systems to provide a better user experience to millions of customers."
+        ""
       ]
     }
   };

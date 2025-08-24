@@ -1,184 +1,100 @@
-#intro {
-  display: flex;
-  flex-direction: row;
+
+/* Section shell */
+.intro-section{
+  background: var(--bg);
+  color: var(--text);
+  position: relative;
+  padding: 80px 24px 60px; /* desktop defaults */
+}
+
+/* TOP: lead paragraph spans full width */
+.intro-lead{
+  max-width: 1200px;
+  margin: 0 auto 28px;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: var(--muted);
+  text-align: left;
+}
+
+/* Two-column grid: LEFT image | RIGHT copy (below lead) */
+.intro-grid{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* left slightly narrower */
+  gap: 40px;
   align-items: center;
-  text-align: center;
-  margin: auto;
-  width: 100%;
-  min-height: 100vh;
-  margin-bottom: 100px;
 }
+.intro-col{ min-width: 0; }
 
-.image-container { 
-  width: 50%;
-  height: 100vh;
-}
-
-.image {
-  height: 100vh;
-  width: 100%;
-  object-fit: cover;
-}
-
-.typist-container {
-  width: 50%;
+/* LEFT: image */
+.intro-media{
   display: flex;
   flex-direction: column;
-  padding: 3rem;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.Typist {
-  color: var(--lightest-slate);
-  text-align: justify;
-  font-size: 4rem;
+.image-frame{
+  width: 80%;
+  max-width: 520px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.04),
+    0 18px 40px rgba(0,0,0,0.45),
+    0 10px 28px var(--ring);
+}
+.image-frame img,
+.image-frame picture,
+.image-frame canvas,
+.image-frame svg{
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.Typist .Cursor--blinking {
+/* RIGHT: copy */
+.intro-copy{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.intro-copy-inner{
+  width: 100%;
+  max-width: 680px;
+}
+
+/* Text styles */
+.intro-kicker{
+  margin: 0 0 6px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
   color: var(--green-bright);
-  padding-left: 4px;
 }
 
-.intro-title {
-  font-family: "NTR", sans-serif;
-  font-size: 4rem;
+.intro-heading{
+  margin: 0 0 12px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
+  font-size: 40px;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #f2f2f2;
+  text-shadow: 0 2px 0 rgba(0,0,0,.55);
 }
 
-.intro-name {
-  font-family: "NTR", sans-serif;
-  color: var(--green-bright);
-  font-weight: medium;
-  font-size: 55px;
+.intro-paragraph{
+  margin: 12px 0;
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: var(--muted);
 }
 
-.intro-subtitle {
-  font-family: "NTR", sans-serif;
-  color: var(--slate);
-  font-weight: 300;
-  font-size: 1.3rem;
-  text-align: justify;
-}
-
-.intro-desc {
-  color: var(--slate);
-  font-family: "NTR", sans-serif;
-  font-size: 22px;
-  text-align: center;
-  max-width: 600px;
-  padding-bottom: 50px;
-}
-
-.intro-contact {
-  font-size: 22px;
-  font-weight: bolder;
-  font-family: "NTR", sans-serif;
-  align-self: center;
-  padding: 10px 30px;
-  cursor: pointer;
-  border: 1px solid var(--green-bright);
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.intro-contact:hover {
-  background-color: var(--lightest-navy);
-}
-
-b {
-  font-size: 17px;
-}
-
-/* Responsive Styles */
-@media only screen and (max-width: 1024px) {
-  #intro {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px; /* Add padding for better spacing */
-    margin-bottom: 50px; /* Adjust margin for smaller screens */
-  }
-
-  .image-container,
-  .typist-container {
-    width: 100%;
-    height: auto; /* Adjust height for better fit */
-  }
-
-  .intro-title {
-    font-size: 3rem; /* Adjust font size for medium screens */
-  }
-
-  .intro-name {
-    font-size: 3rem;
-  }
-
-  .Typist {
-    font-size: 2.5rem;
-  }
-
-  .intro-subtitle {
-    font-size: 1.2rem;
-  }
-
-  .intro-desc {
-    font-size: 20px;
-    max-width: 90%; /* Use percentage for better fit */
-    padding-bottom: 30px;
-  }
-
-  .intro-contact {
-    font-size: 20px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  #intro {
-    min-height: unset;
-    padding: 20px; /* Adjust padding for small screens */
-    margin: 0;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .image-container,
-  .typist-container {
-    width: 100%;
-    height: auto; /* Remove fixed height */
-  }
-
-  .intro-title {
-    font-size: 2.5rem; /* Smaller font size for small screens */
-  }
-
-  .intro-name {
-    font-size: 1.8rem;
-  }
-  .image {
-    height: 50vh;
-  }
-  .typist-container {
-    padding: 1.7rem;
-  }
-
-  .Typist {
-    font-size: 1.8rem;
-  }
-
-  .intro-subtitle {
-    font-size: 1.5rem;
-  }
-
-  .intro-desc {
-    font-size: 16px;
-    max-width: 90%; /* Adjust width for small screens */
-    padding-bottom: 20px;
-  }
-
-  .intro-contact {
-    font-size: 18px;
-    padding: 8px 20px; /* Adjust padding for small screens */
-  }
-}
-
+/* ---------- Your fixed side social (unchanged from your setup) ---------- */
 .social-icons {
   position: fixed;
   left: 10px;
@@ -189,25 +105,70 @@ b {
   align-items: center;
   z-index: 100;
 }
-
 .social-icons a {
   margin: 10px 0;
   font-size: 30px;
   transition: transform 0.3s;
 }
+.social-icons a:hover { transform: scale(1.3); }
+.icon-linkedin:hover { color: #0077b5; }
+.icon-github:hover   { color: #333; }
+.icon-instagram:hover{ color: #e4405f; }
 
-.social-icons a:hover {
-  transform: scale(1.3);
+/* ---------- Responsive ---------- */
+
+/* Laptops & Tablets */
+@media (max-width: 1180px){
+  .intro-grid{
+    grid-template-columns: 1fr 1.1fr;
+    gap: 32px;
+  }
+  .image-frame{ max-width: 500px; }
 }
 
-.icon-linkedin:hover {
-  color: #0077b5; /* LinkedIn's official color */
+/* Tablets */
+@media (max-width: 1024px){
+  .intro-section{ padding: 72px 20px 52px; }
+  .intro-lead{ margin-bottom: 24px; text-align: center; }
+
+  .intro-grid{
+    grid-template-columns: 1fr; /* stack */
+    gap: 28px;
+  }
+
+  /* Image top, text below */
+  .intro-media{ order: 1; align-items: center; }
+  .intro-copy{ order: 2; justify-content: center; }
+
+  .intro-copy-inner{ text-align: center; max-width: 720px; }
+  .intro-heading{ font-size: 36px; }
 }
 
-.icon-github:hover {
-  color: #333; /* GitHub's official color */
+/* Large phones / small tablets */
+@media (max-width: 720px){
+  .intro-section{ padding: 64px 18px 48px; }
+  .intro-lead{ font-size: 17px; }
+  .image-frame{ max-width: 460px; border-radius: 14px; }
+  .intro-heading{ font-size: 32px; }
+  .intro-paragraph{ font-size: 15px; }
 }
 
-.icon-instagram:hover {
-  color: #e4405f; /* Instagram's official color */
+/* Phones */
+@media (max-width: 480px){
+  .intro-section{ padding: 56px 16px 40px; }
+  .intro-lead{ font-size: 16px; }
+  .image-frame{ max-width: 400px; border-radius: 14px; }
+  .intro-heading{ font-size: 28px; }
+  .intro-paragraph{ font-size: 14px; line-height: 1.8; }
+}
+
+/* Tiny devices */
+@media (max-width: 360px){
+  .image-frame{ max-width: 320px; }
+  .intro-heading{ font-size: 24px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
 }

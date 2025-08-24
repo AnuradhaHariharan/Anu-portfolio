@@ -1,159 +1,138 @@
-import React, { useState, useEffect, useRef } from 'react';
-import '../styles/FrontPage.css'; // For custom styles
+import React, { useEffect, useRef, useState } from 'react';
+import '../styles/FrontPage.css';
+import FadeInSection from './FadeInSection';
 
-const TEXT_COLOR = 'rgba(0, 255, 0, 0.9)';  // Green color for text
-const BACKGROUND_COLOR = 'rgba(0, 0, 0, 0.8)'; // Black color for background
-const ALPHA_BACKGROUND_COLOR = '#00000018'; // Semi-transparent black
-const FONT = '15pt monospace'; // Font style
-const TEXT_COLUMN_WIDTH = 20; // Width of each column
-const FPS = 20; // Frames per second
 
-function getPseudoRandomInRange(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+const COLORS = {
+  accent: '#00ff66',
+  bg: '#0b0b0b',
+  starRGB: '255,255,255',
+  glowRGB: '0,255,120',
+};
+
+/* ---------- Falling Stars Background ---------- */
+function StarfieldBackground() {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const canvas = ref.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let raf;
+
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+    const stars = [];
+
+    const makeStar = (w, h) => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.4 + 0.3,
+      s: Math.random() * 0.7 + 0.25,
+      t: Math.random() * Math.PI * 2,
+      tw: Math.random() * 0.025 + 0.01,
+      g: Math.random() < 0.18,
+    });
+
+    const resize = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = Math.floor(w * DPR);
+      canvas.height = Math.floor(h * DPR);
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+      const target = Math.min(Math.floor((w * h) / 3200), 350);
+      stars.length = 0;
+      for (let i = 0; i < target; i++) stars.push(makeStar(w, h));
+    };
+
+    const step = () => {
+      const w = canvas.width / DPR;
+      const h = canvas.height / DPR;
+      ctx.fillStyle = COLORS.bg;
+      ctx.fillRect(0, 0, w, h);
+
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+        s.y += s.s;
+        s.t += s.tw;
+        if (s.y - s.r > h) {
+          stars[i] = makeStar(w, h);
+          stars[i].y = -s.r;
+        }
+        const tw = 0.6 + 0.4 * Math.sin(s.t);
+        ctx.shadowBlur = s.g ? 8 : 6;
+        ctx.shadowColor = `rgba(${s.g ? COLORS.glowRGB : COLORS.starRGB}, ${0.18 * tw})`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${COLORS.starRGB}, ${0.55 * tw})`;
+        ctx.fill();
+      }
+
+      ctx.shadowBlur = 0;
+      raf = requestAnimationFrame(step);
+    };
+
+    resize();
+    window.addEventListener('resize', resize);
+    raf = requestAnimationFrame(step);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return <canvas ref={ref} className="stars-bg" aria-label="Falling stars background" />;
 }
 
-function MatrixBackground({ destroyMode }) {
-    const matrixCanvasRef = useRef(null);
+/* ---------- FrontPage ---------- */
+export default function FrontPage() {
 
-    const initializeMatrixCanvas = () => {
-        if (!matrixCanvasRef.current) return;
+  const [showMain, setShowMain] = useState(false);
 
-        const canvas = matrixCanvasRef.current;
-        const canvasContext = canvas.getContext('2d');
+  useEffect(() => {
+    const tShowMain = setTimeout(() => setShowMain(true), 0);
+    return () => {
+      clearTimeout(tShowMain);
 
-        if (!canvasContext) return;
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        canvasContext.fillStyle = BACKGROUND_COLOR;
-        canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-
-        const numberOfColumns = Math.floor(canvas.width / TEXT_COLUMN_WIDTH) + 1;
-        const defaultYPositions = Array(numberOfColumns).fill(0);
-
-        return defaultYPositions;
     };
+  }, []);
 
-    const drawMatrix = (yPositions) => {
-        if (!matrixCanvasRef.current) return;
+  const stats = [{ value: '1+', label: 'Years of Experience' }];
 
-        const canvas = matrixCanvasRef.current;
-        const canvasContext = canvas.getContext('2d');
-
-        if (!canvasContext) return;
-
-        canvasContext.fillStyle = ALPHA_BACKGROUND_COLOR;
-        canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-
-        canvasContext.fillStyle = TEXT_COLOR;
-        canvasContext.font = FONT;
-
-        const newYPositions = yPositions.map((y, index) => {
-            const char = String.fromCharCode(getPseudoRandomInRange(33, 126));
-            const x = index * TEXT_COLUMN_WIDTH;
-
-            canvasContext.fillText(char, x, y);
-
-            const shouldResetYPosition = y > canvas.height;
-            return shouldResetYPosition ? 0 : y + 20;
-        });
-
-        return newYPositions;
-    };
-
-    useEffect(() => {
-        const defaultYPositions = initializeMatrixCanvas();
-
-        window.addEventListener('resize', initializeMatrixCanvas);
-
-        const animate = (yPositions) => {
-            const newYPositions = drawMatrix(yPositions);
-
-            if (newYPositions) {
-                setTimeout(() => {
-                    animate(newYPositions);
-                }, 1000 / FPS);
-            }
-        };
-
-        if (defaultYPositions) animate(defaultYPositions);
-
-        return () => {
-            window.removeEventListener('resize', initializeMatrixCanvas);
-        };
-    }, [drawMatrix, initializeMatrixCanvas]);
-
-    useEffect(() => {
-        if (destroyMode) {
-            document.body.style.overflow = 'hidden'; // Disable scrolling
-            document.body.style.position = 'fixed'; // Lock the body in place
-            document.body.style.top = `-${window.scrollY}px`; // Adjust for current scroll position
-            document.body.style.width = '100%'; // Ensure width is 100%
-        } else {
-            document.body.style.overflow = ''; // Reset overflow to default (enabled scrolling)
-            document.body.style.position = ''; // Reset position
-            document.body.style.top = ''; // Reset top
-            document.body.style.width = ''; // Reset width
-        }
-    }, [destroyMode]);
-
-    return (
-        <canvas
-            ref={matrixCanvasRef}
-            aria-label="Matrix background"
-            className="matrix-background"
-        />
-    );
-}
-
-function FrontPage() {
-    const [destroyMode, setDestroyMode] = useState(false);
-
-    useEffect(() => {
-        document.body.style.overflow = 'hidden'; // Disable scrolling on initial load
-        document.body.style.position = 'fixed'; // Lock the body in place
-        document.body.style.width = '100%'; // Ensure width is 100%
-
-        return () => {
-            document.body.style.overflow = ''; // Reset overflow on component unmount
-            document.body.style.position = ''; // Reset position
-            document.body.style.width = ''; // Reset width
-        };
-    }, []);
-
-    const handleHover = (event) => {
-        if (destroyMode) {
-            event.target.style.display = 'none';
-        }
-    };
-
-    const handleDestroyClick = () => {
-        setDestroyMode(true);
-    };
-
-    const handleEnterClick = () => {
-        document.body.style.overflow = ''; // Enable scrolling
-        document.body.style.position = ''; // Reset position
-        document.body.style.width = ''; // Reset width
-        window.location.href = `${process.env.PUBLIC_URL}/#intro`; // Redirect to the portfolio section
-    };
-
-    return (
-        <div className={`front-page ${destroyMode ? 'destroy-mode' : ''}`}>
-            <MatrixBackground destroyMode={destroyMode} />
-            <div className={`hero-section text-center ${destroyMode ? 'destroy-mode' : ''}`}>
-                <h1 className="matrix-text" onMouseOver={handleHover}>
-                    You take the blue pill—you keep scrolling, and everything stays the same. You take the red pill—and you see how deep the rabbit hole goes.<br />
-                    <span>All I'm offering is the truth.</span>
-                </h1>
-                <div className="button-group">
-                    <button onClick={handleEnterClick} disabled={destroyMode} className='btn btn-one'>Enter</button>
-                    <button onClick={handleDestroyClick} disabled={destroyMode} className='btn btn-two'>Crash this Website</button>
-                </div>
-            </div>
+  return (
+    <div className="front-page" id='front-page'>
+      <StarfieldBackground />
+      <header className={`hero-wrap ${showMain ? 'enter' : ''}`}>
+        <div className="hero-left">
+          <h1 className="hero-stack">
+            <span className="hero-line hero-accent">FRONTEND</span>
+            <span className="hero-line">DEVELOPER</span>
+          </h1>
+         
+          <FadeInSection>
+          <p className="hero-sub">
+            Hi! I’m <strong>Anuradha</strong>, a frontend  developer focused on performance, accessibility, and clean UI that users actually feel.
+          </p>
+          </FadeInSection>
+          <FadeInSection>
+          <div className="cta-row">
+            <a className="btn btn-accent" href="#contact">HIRE ME</a>
+          </div>
+          </FadeInSection>
         </div>
-    );
-}
+      </header>
 
-export default FrontPage;
+      {/* Right stats */}
+      <aside className={`stats-rail ${showMain ? 'enter' : ''}`}>
+        {stats.map((s, i) => (
+          <div className="stat" key={i}>
+            <div className="stat-num">{s.value}</div>
+            <div className="stat-label">{s.label}</div>
+          </div>
+        ))}
+      </aside>
+    </div>
+  );
+}

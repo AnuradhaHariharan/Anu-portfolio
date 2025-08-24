@@ -1,7 +1,6 @@
 .navbar {
     background-color: #00000080;
     color: var(--lightest-slate);
-    font-family: 'NTR';
     font-weight: bold;
     width: 91.666667%;
     top: .3rem !important;
@@ -16,7 +15,7 @@
   }
   
   .navbar-light .navbar-brand {
-    color: var(--lightest-slate) !important;
+    color: var(--accent) !important;
   }
   
   .navbar-light .navbar-nav .nav-link {
@@ -46,3 +45,4 @@
     }
     
   }
+  

@@ -30,7 +30,6 @@ function Contact() {
     return (
         <div id="contact">
              <div className="shining-button-container">
-          <ShiningButton>CONTACT</ShiningButton>
         </div>
             <FadeInSection>
                 <div className="contact-container">
@@ -105,7 +104,7 @@ function Contact() {
                             />
                         </div>
                         <button type="submit" className="submit-button" disabled={state.submitting}>
-                            Hit me up
+                        Let's Connect
                             <img src={`${process.env.PUBLIC_URL}/assets/rocket.png`} alt="Rocket Icon" className="rocket-icon" />
                         </button>
                     </form>

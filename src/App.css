@@ -1,3 +1,14 @@
+
+:root{
+  --bg: #0b0b0b;
+  --text: #eaeaea;
+  --muted: rgba(255,255,255,.72);
+  --accent: #00ff66;
+  --ring: rgba(0,255,120,.25);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
 html {
   scroll-behavior: smooth;
 }

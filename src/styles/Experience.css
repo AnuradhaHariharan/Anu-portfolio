@@ -1,72 +1,163 @@
-#skills {
-  height: 88vh;
-  margin: auto; /* Center the parent container horizontally */
-  max-width: 1000px;
-  padding-top: 100px;
+/* My Stack — labels forced visible, static chips, responsive */
+
+:root{
+  --bg: #0b0b0b;
+  --text: #eaeaea;
+  --muted: rgba(255,255,255,.72);
+  --accent: #00ff66;
+  --ring: rgba(0,255,120,.25);
+
+  --card: #111316;
+  --card-2: #14181c;
+  --label: #e6f1ff; /* bright, guaranteed visible */
 }
 
-.section-header {
-  text-align: center;
+/* Section */
+.stack-section{
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 80px 24px 60px;
+  color: var(--text);
+}
+.section-header{ text-align: center; margin-bottom: 12px; }
+.section-title{
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+  color: var(--label);
+  text-shadow: 0 2px 0 rgba(0,0,0,.55);
 }
 
-.section-title {
-  font-family: "NTR", sans-serif;
-  font-size: 36px;
-  font-weight: bold;
-  color: var(--lightest-slate);
-}
+/* Rows */
+.stack-rows{ display: grid; gap: 28px; margin-top: 10px; }
 
-.experience-container {
-  display: flex;
-  justify-content: center; /* Centering the carousel */
+/* Grid: fixed label column + content */
+.stack-row{
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) 1fr;
   align-items: center;
-  margin-top: 6rem;
-  overflow: hidden; /* Hide any content overflowing during animation */
-  width: 100%; /* Set width to control visible space */
+  gap: 20px;
+  padding: 14px 10px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.05);
+  position: relative;
 }
 
-.experience-column {
+/* Label column */
+.stack-label-wrap{
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 20px; /* Space between the items */
-  white-space: nowrap; /* Prevent wrapping */
+  justify-content: flex-start;
+  min-width: 160px;
+  z-index: 1;
+}
+.stack-label{
+  display: inline-block !important;      /* ensure visible */
+  visibility: visible !important;         /* belt + suspenders */
+  color: var(--label) !important;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
 }
 
-.experience-item {
+/* Static list of chips */
+.stack-list{
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.stack-item{
+  display: inline-flex;
   align-items: center;
-  text-align: center;
-  width: 14rem; /* Fixed width for each item */
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 999px;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.stack-item:hover{
+  transform: translateY(-2px);
+  border-color: rgba(0,255,120,.35);
+  background: var(--card-2);
+  box-shadow: 0 10px 24px rgba(0,0,0,.35), 0 8px 20px rgba(0,255,120,.12);
+}
+.stack-icon{
+  display: inline-grid;
+  place-items: center;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(120% 120% at 30% 20%, rgba(0,255,120,.20), rgba(0,255,120,.06) 40%, rgba(255,255,255,.04) 100%);
+  border: 1px solid rgba(0,255,120,.25);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 4px 14px rgba(0,255,120,.18);
+}
+.stack-icon img{ width: 26px; height: 26px; object-fit: contain; }
+.stack-name{
+  color: var(--label);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: .02em;
 }
 
-.experience-image-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 12rem;
-  height: 12rem;
-  border-radius: 50%; /* Circular design */
-  background-color: var(--light-navy);
-  margin-bottom: 10px;
+/* Screen-reader only (not visible) */
+.sr-only{
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  padding:0 !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  clip:rect(0,0,0,0) !important;
+  white-space:nowrap !important;
+  border:0 !important;
 }
 
-.experience-image {
-  width: 8rem;
-  height: 8rem;
-  object-fit: contain;
+/* Responsive */
+@media (max-width: 1024px){
+  .section-title{ font-size: 30px; }
+  .stack-row{ grid-template-columns: minmax(140px, 200px) 1fr; }
 }
-
-.experience-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--lightest-slate);
-}
-
-@media (max-width: 600px) {
-  #skills {
-    padding: 1.2rem;
-    height: 75vh;
+@media (max-width: 720px){
+  .stack-section{ padding: 64px 18px 48px; }
+  .stack-row{
+    grid-template-columns: 1fr;   /* label above chips */
+    text-align: center;
   }
+  .stack-label-wrap{ justify-content: center; min-width: 0; }
+  .stack-list{ justify-content: center; }
 }
+@media (max-width: 480px){
+  .section-title{ font-size: 26px; }
+  .stack-label{ font-size: 18px; }
+  .stack-icon{ width: 44px; height: 44px; }
+  .stack-icon img{ width: 24px; height: 24px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .stack-item{ transition: none; }
+}
+/* Unique heading style so globals can't override it */
+.stack-heading{
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+  color: #e6f1ff !important;   /* force bright text */
+  text-shadow: 0 2px 0 rgba(0,0,0,.55);
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative;
+  z-index: 2;                   /* ensure it sits above any overlays */
+}
+
+/* (Optional) neutralize any old global rule */
+.stack-section .section-title{ all: unset; }
