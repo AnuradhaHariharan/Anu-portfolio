@@ -7,6 +7,9 @@
   --ring: rgba(0,255,120,.25);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
+* {
+  box-sizing: border-box;
+}
 
 
 html {

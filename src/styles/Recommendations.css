@@ -178,7 +178,10 @@
   .recs-quote{ -webkit-line-clamp: 10; font-size: 15px; }
 }
 @media (max-width: 480px){
-  .recs-section{ padding: 56px 16px 40px; }
+  .recs-section{ 
+    padding: 56px 16px 40px; 
+    height:90vh ;
+  }
   .recs-avatar{ width: 64px; height: 64px; }
   .recs-quote{ -webkit-line-clamp: unset; } /* let it flow on tiny screens */
 }

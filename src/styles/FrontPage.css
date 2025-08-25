@@ -193,7 +193,7 @@
 @media (max-width: 480px){
   .intro-first, .intro-last{ font-size: 44px; }
   .hero-wrap{ padding: 72px 16px 48px; }
-  .hero-line{ font-size: 56px; }
+  .hero-line{ font-size: 45px; }
   .hero-sub{ font-size: 15px; }
   .cta-row .btn{ padding: 12px 16px; font-size: 13px; }
   .stat-num{ font-size: 32px; }
