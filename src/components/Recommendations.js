@@ -4,20 +4,20 @@ import FadeInSection from "./FadeInSection";
 
 const recommendationsData = [
   {
-    name: "Akash Milton Marimuthu",
-    role: "Associate Product Manager",
-    company: "Sprinto",
-    photo: `${process.env.PUBLIC_URL}/assets/akash.png`,
-    review:
-      "Anuradha is a quick learner with a strong grasp of frontend fundamentals and a keen eye for detail. In the time I’ve known her, she’s shown great initiative in exploring modern frontend frameworks and consistently brings clarity and structure to her code. She asks the right questions, collaborates well with others, and has a calm, thoughtful approach to solving UI challenges. I’m confident she’ll grow into a solid engineer and be a valuable asset to any team she joins."
-  },
-  {
     name: "Aikansh Garg",
     role: "Software Engineer",
     company: "Paylocity",
     photo: `${process.env.PUBLIC_URL}/assets/aikansh.jpg`,
     review:
       "I had the pleasure of working with Anuradha on several projects during my time at Fyle, and I can confidently say she’s one of the most driven interns I’ve worked with. She has an amazing ability to take on any challenge and learn quickly. Whether it was picking up new frameworks or diving into the latest technologies, she was always up for it. There were plenty of times when Anuradha was able to debug tricky issues on her own without needing much support, which was really impressive. She also played a key role in improving our frontend performance and ensuring the codebase stayed clean and efficient. Anuradha is passionate about what she does, and it shows in her work. I’d love to work with her again anytime and highly recommend her to any team looking for a talented and enthusiastic developer."
+  },
+  {
+    name: "Akash Milton Marimuthu",
+    role: "Associate Product Manager",
+    company: "Sprinto",
+    photo: `${process.env.PUBLIC_URL}/assets/akash.png`,
+    review:
+      "Anuradha is a quick learner with a strong grasp of frontend fundamentals and a keen eye for detail. In the time I’ve known her, she’s shown great initiative in exploring modern frontend frameworks and consistently brings clarity and structure to her code. She asks the right questions, collaborates well with others, and has a calm, thoughtful approach to solving UI challenges. I’m confident she’ll grow into a solid engineer and be a valuable asset to any team she joins."
   },
   {
     name: "Priya Chaudhary",

@@ -210,7 +210,7 @@
 
 @media (max-height: 740px){
   .hero-wrap{ padding-top: 96px; padding-bottom: 64px; }
-  .hero-line{ font-size: 96px; }
+  .hero-line{ font-size: 45px; }
 }
 
 @media (max-height: 640px){

@@ -176,11 +176,12 @@
   .section-title{ font-size: 28px; }
   .recs-avatar{ width: 68px; height: 68px; }
   .recs-quote{ -webkit-line-clamp: 10; font-size: 15px; }
+  .recs-card{height: 100%;}
 }
 @media (max-width: 480px){
   .recs-section{ 
     padding: 56px 16px 40px; 
-    height:90vh ;
+    height:100vh ;
   }
   .recs-avatar{ width: 64px; height: 64px; }
   .recs-quote{ -webkit-line-clamp: unset; } /* let it flow on tiny screens */

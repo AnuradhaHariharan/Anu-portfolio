@@ -106,7 +106,8 @@
     max-width: 90%; /* Adjusts the max width for smaller screens */
   }
   #contact {
-    padding-top: 0;
+    padding: 56px 16px 40px;
+    margin-top: 100px;
   }
 
   .contact-container h2 {
