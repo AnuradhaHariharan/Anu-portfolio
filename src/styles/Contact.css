@@ -31,7 +31,7 @@
   font-weight: bold;
   color: var(--green-bright); 
   margin-left: .7rem; /* Lightest slate for label text */
-  transition: all .3s ease-in;
+  transition: all .4s ease-in-out;
 }
 
 .form-group input,
