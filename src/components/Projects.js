@@ -31,15 +31,9 @@ class Projects extends React.Component {
         techStack: "Next.js, Firebase",
         open: "https://memedb.app/",
       },
-      Lawgist: {
-        desc:
-          "Lawgist is an online platform that lets you quickly search and browse Indian laws and bare acts by title or year in a clean, easy-to-use format.",
-        techStack: "Next.js",
-        open: "https://lawgist.in/",
-      },
       TaskBuddy: {
         desc:
-          "TaskBuddy is a task management application built with React & TypeScript, featuring task creation, editing, filtering, and multiple view modes. The app is deployed on Firebase and supports Google authentication.",
+          "TaskBuddy is a task management application built with React & TypeScript, featuring task creation, editing, filtering, and multiple view modes. The app supports Google authentication.",
         techStack: "MongoDB, Express.js, React, Node.js",
         link: "https://github.com/AnuradhaHariharan/task-manager",
         open: "https://task-manager-6432a.web.app/",
