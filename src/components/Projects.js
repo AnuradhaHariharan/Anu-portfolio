@@ -25,12 +25,6 @@ class Projects extends React.Component {
 
   render() {
     const projects = {
-      MemeDb: {
-        desc:
-          "MemeDB is a curated library of meme templates for easy remixing.",
-        techStack: "Next.js, Firebase",
-        open: "https://memedb.app/",
-      },
       TaskBuddy: {
         desc:
           "TaskBuddy is a task management application built with React & TypeScript, featuring task creation, editing, filtering, and multiple view modes. The app supports Google authentication.",
