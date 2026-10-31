@@ -11,7 +11,7 @@ export default function Footer({ onDestroy }) {
         </p>
         <p className="footer-actions">
           <button type="button" className="link-btn" onClick={onDestroy}>
-            Destroy this page
+            Destroy this site
           </button>
           <a href="#top">Back to top</a>
         </p>

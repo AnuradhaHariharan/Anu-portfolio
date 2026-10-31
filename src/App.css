@@ -61,3 +61,119 @@ main:focus {
   margin-top: 1.25rem;
   color: var(--ink-2);
 }
+
+/* Floating "Destroy this site" button */
+.destroy-fab {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 55;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0 1.1rem 0 0.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--accent);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px var(--ring), 0 12px 30px -12px rgba(0, 0, 0, 0.7);
+  transition: background-color 150ms, color 150ms;
+}
+
+.destroy-fab:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .destroy-fab {
+    animation: fab-in 600ms 1.2s var(--ease) both, fab-pulse 2.4s 2s ease-in-out 2;
+  }
+  .destroy-fab svg {
+    transition: transform 400ms var(--ease);
+  }
+  .destroy-fab:hover svg {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes fab-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+  }
+}
+
+@keyframes fab-pulse {
+  50% {
+    box-shadow: 0 0 0 12px rgba(0, 255, 120, 0), 0 12px 30px -12px rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media (max-width: 30rem) {
+  .destroy-fab span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .destroy-fab {
+    padding: 0;
+    width: 52px;
+    justify-content: center;
+  }
+}
+
+/* Reading progress, driven by scroll position (no JavaScript) */
+.scroll-progress {
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 60;
+    height: 2px;
+    background: var(--accent);
+    transform-origin: 0 50%;
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes progress-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Scroll reveal */
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+    transition-delay: calc(var(--i, 0) * 80ms);
+  }
+  .js-reveal .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+  .js-reveal .impact-item .bar {
+    width: 0;
+    transition: width 1100ms var(--ease) 250ms;
+  }
+  .js-reveal .impact-item.is-in .bar {
+    width: var(--w);
+  }
+}

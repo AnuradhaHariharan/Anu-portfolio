@@ -209,7 +209,7 @@ export default function FixTheUI({ startSignal, onDestroy }) {
           <p className="game-alt">
             Prefer chaos?{" "}
             <button type="button" className="link-btn" onClick={onDestroy}>
-              Destroy this page
+              Destroy this site
             </button>{" "}
             and shoot it apart letter by letter. It rebuilds itself.
           </p>

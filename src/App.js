@@ -12,6 +12,7 @@ import Deferred from "./components/Deferred";
 import Inspector from "./components/inspector/Inspector";
 import { navLinks, profile } from "./data/content";
 import { useTheme } from "./hooks";
+import useReveal from "./hooks/useReveal";
 import "./App.css";
 
 
@@ -102,6 +103,8 @@ export default function App() {
     return () => clearTimeout(t);
   }, [toast]);
 
+  useReveal([showLate, pageKey]);
+
   const commands = useMemo(
     () => [
       ...[{ id: "work", label: "Impact" }, ...navLinks].map((l) => ({
@@ -110,7 +113,7 @@ export default function App() {
         label: l.label,
         run: () => goTo(l.id),
       })),
-      { id: "destroy", group: "Play", label: "Destroy this page", keywords: "game shoot fun break", run: () => startDestroy() },
+      { id: "destroy", group: "Play", label: "Destroy this site", keywords: "game shoot fun break", run: () => startDestroy() },
       { id: "play", group: "Play", label: "Start Fix the UI", keywords: "game quiz", run: () => {
           goTo("play");
           setGameSignal((n) => n + 1);
@@ -199,6 +202,17 @@ export default function App() {
         )}
       </main>
       {showLate && <Footer key={`footer-${pageKey}`} onDestroy={startDestroy} />}
+      <div className="scroll-progress" aria-hidden="true" />
+      {!destroying && !inspecting && showRest && (
+        <button type="button" className="destroy-fab" onClick={startDestroy}>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" strokeWidth="2" />
+            <circle cx="12" cy="12" r="1.8" fill="currentColor" />
+            <path d="M12 1v5M12 18v5M1 12h5M18 12h5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+          <span>Destroy this site</span>
+        </button>
+      )}
       <Inspector active={inspecting} onExit={stopInspect} />
       {destroying && (
         <Suspense fallback={null}>
