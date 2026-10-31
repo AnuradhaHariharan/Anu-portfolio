@@ -47,7 +47,7 @@ export function splitPage(roots) {
       n.parentNode.replaceChild(frag, n);
     });
 
-    root.querySelectorAll("img, svg, input, textarea, .btn, .sys-node, .bars, .lab-stage, .mock").forEach((el) => {
+    root.querySelectorAll("img, svg, input, textarea, .btn, .sys-node, .bars, .mock").forEach((el) => {
       if (el.closest(SKIP) && !el.matches("input, textarea")) return;
       if (el.closest(".dx-b") && el.closest(".dx-b") !== el) return;
       el.classList.add("dx-b");

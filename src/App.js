@@ -17,10 +17,8 @@ import "./App.css";
 
 
 const CommandPalette = lazy(() => import("./components/CommandPalette"));
-const loadLab = () => import("./components/Lab");
 const loadGame = () => import("./components/game/FixTheUI");
 const DestroyMode = lazy(() => import("./components/destroy/DestroyMode"));
-const Lab = lazy(() => loadLab());
 const FixTheUI = lazy(() => loadGame());
 
 const goTo = (id) => {
@@ -69,7 +67,7 @@ export default function App() {
     setPaletteOpen(false);
     setStage(2);
     setForceAll(true);
-    await Promise.all([loadLab(), loadGame()]);
+    await loadGame();
     setTimeout(() => setDestroying(true), 250);
   }, []);
   useEffect(() => {
@@ -187,9 +185,6 @@ export default function App() {
             <Experience />
             {showLate && (
               <>
-                <Deferred id="lab" minHeight="34rem" force={forceAll}>
-                  <Lab />
-                </Deferred>
                 <Deferred id="play" minHeight="48rem" force={forceAll}>
                   <FixTheUI startSignal={gameSignal} onDestroy={startDestroy} />
                 </Deferred>

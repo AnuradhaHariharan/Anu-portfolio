@@ -18,7 +18,7 @@ export const profile = {
 
 // Before/after pairs drawn as bars. `lowerIsBetter` flips the bar maths.
 // Headline results, each shown once. How they were achieved lives in
-// Experience; the chart fix is replayed in the Lab case study.
+// Experience.
 export const impact = [
   {
     id: "chart",
@@ -29,7 +29,7 @@ export const impact = [
     unit: "s",
     lowerIsBetter: true,
     summary: "1-hour chart load time cut from ~1.6s to ~0.15s",
-    detail: "Trading terminal charts now use server-native intraday bars.",
+    detail: "About 11x faster. Seconds charts went from ~40 sequential requests to one.",
     where: "Rupeezy",
   },
   {
@@ -81,7 +81,7 @@ export const jobs = [
     context: "A fintech stock broker whose web trading terminal serves 6,000–10,000 traders a day.",
     points: [
       "Upgraded the TradingView charting engine from v26 to v32, six major versions behind. Fixed every breaking change while keeping existing workflows intact, and rolled it out in 7 staged pre-prod releases with zero disruption.",
-      "Moved the trading terminal's charts to server-native intraday bars, the fix replayed in the case study above.",
+      "Switched the trading terminal's charts to server-native intraday bars.",
       "Contributed to the KYC 2.0 revamp, migrating account opening from Angular 11 to React 19: a 13-step SEBI-compliant onboarding flow with PAN and KRA auto-fill, selfie and e-sign, and resume-from-last-step, aimed at lifting completion from 50% to 70%+.",
       "Implemented lead tracking and conversion improvements on the website.",
       "Working on the frontend for FinAI, Rupeezy's in-house AI model.",
@@ -216,7 +216,6 @@ export const recommendations = [
 export const navLinks = [
   { id: "systems", label: "Systems" },
   { id: "experience", label: "Experience" },
-  { id: "lab", label: "Lab" },
   { id: "play", label: "Play" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },

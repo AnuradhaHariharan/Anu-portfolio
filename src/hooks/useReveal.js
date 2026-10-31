@@ -10,7 +10,6 @@ const SELECTORS = [
   ".principles-grid > div",
   ".exp",
   ".toolkit",
-  ".lab-grid",
   ".game-card",
   ".project",
   ".rec-list > li",

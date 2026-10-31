@@ -48,7 +48,7 @@ export const nodes = [
     tier: "shared",
     name: "Market data layer",
     tech: "REST and WebSockets",
-    detail: "Serves server-native intraday bars to the charts. The case study below replays that switch.",
+    detail: "Serves server-native intraday bars and live updates to the charts.",
   },
   {
     id: "eks",
