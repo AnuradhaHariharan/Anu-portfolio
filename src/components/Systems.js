@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { edges, nodes, principles, tiers } from "../data/systems";
+import { useMediaQuery } from "../hooks";
 import "./Systems.css";
 
 const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
@@ -7,6 +8,9 @@ const neighbours = (id) =>
   edges.flatMap(([a, b]) => (a === id ? [b] : b === id ? [a] : []));
 
 export default function Systems() {
+  // Phones: details open inline under the tapped box (accordion), so there's
+  // no scrolling down to read and back up to pick the next one.
+  const narrow = useMediaQuery("(max-width: 44rem)");
   const [selected, setSelected] = useState("trading");
   const [preview, setPreview] = useState(null);
   const [lines, setLines] = useState([]);
@@ -14,7 +18,7 @@ export default function Systems() {
   const nodeRefs = useRef({});
 
   const focusId = preview || selected;
-  const related = new Set(neighbours(focusId));
+  const related = new Set(focusId ? neighbours(focusId) : []);
 
   // Draw connectors from the real positions of the node buttons.
   const measure = useCallback(() => {
@@ -57,7 +61,7 @@ export default function Systems() {
     };
   }, [measure]);
 
-  const active = byId[focusId];
+  const active = focusId ? byId[focusId] : null;
 
   return (
     <section id="systems" className="section" aria-labelledby="systems-title">
@@ -94,28 +98,44 @@ export default function Systems() {
                   {nodes
                     .filter((n) => n.tier === t.id)
                     .map((n) => (
+                      <React.Fragment key={n.id}>
                       <button
-                        key={n.id}
                         ref={(el) => (nodeRefs.current[n.id] = el)}
                         type="button"
                         className={`sys-node${n.id === focusId ? " is-active" : ""}${
                           related.has(n.id) ? " is-related" : ""
                         }`}
-                        aria-pressed={n.id === selected}
-                        aria-controls="sys-detail"
-                        onClick={() => setSelected(n.id)}
+                        aria-pressed={narrow ? undefined : n.id === selected}
+                        aria-expanded={narrow ? n.id === selected : undefined}
+                        aria-controls={narrow ? `sys-detail-${n.id}` : "sys-detail"}
+                        onClick={() => setSelected((cur) => (narrow && cur === n.id ? null : n.id))}
                         onPointerEnter={() => setPreview(n.id)}
                         onPointerLeave={() => setPreview(null)}
                       >
                         <span className="sys-node-name">{n.name}</span>
                         <span className="sys-node-tech">{n.tech}</span>
                       </button>
+                      {narrow && n.id === selected && (
+                        <div id={`sys-detail-${n.id}`} className="sys-inline">
+                          <p>{n.detail}</p>
+                          {neighbours(n.id).length > 0 && (
+                            <p className="sys-detail-links">
+                              <span>Connects to </span>
+                              {neighbours(n.id)
+                                .map((id) => byId[id].name)
+                                .join(", ")}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                      </React.Fragment>
                     ))}
                 </div>
               </div>
             ))}
           </div>
 
+          {!narrow && active && (
           <div id="sys-detail" className="sys-detail" aria-live="polite">
             <h3>{active.name}</h3>
             <p className="sys-detail-tech">{active.tech}</p>
@@ -129,6 +149,7 @@ export default function Systems() {
               </p>
             )}
           </div>
+          )}
         </div>
 
         <div className="principles">

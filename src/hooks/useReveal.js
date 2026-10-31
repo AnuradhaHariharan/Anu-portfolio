@@ -34,8 +34,28 @@ export default function useReveal(deps) {
           }
         });
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+      { rootMargin: "0px 0px -5% 0px", threshold: 0 }
     );
+
+    // Safety net: never leave content hidden. Anything at or above the bottom
+    // of the screen is revealed on scroll, even if the observer misses it.
+    let ticking = false;
+    const sweep = () => {
+      ticking = false;
+      const limit = window.innerHeight;
+      document.querySelectorAll(".reveal:not(.is-in)").forEach((el) => {
+        if (el.getBoundingClientRect().top < limit) el.classList.add("is-in");
+      });
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(sweep);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    const firstSweep = setTimeout(sweep, 400);
 
     const prepare = (scope) => {
       scope.querySelectorAll(SELECTORS).forEach((el) => {
@@ -58,6 +78,9 @@ export default function useReveal(deps) {
     return () => {
       io.disconnect();
       mo.disconnect();
+      clearTimeout(firstSweep);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, deps); // eslint-disable-line react-hooks/exhaustive-deps
 }

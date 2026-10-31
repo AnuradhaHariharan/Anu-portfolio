@@ -224,12 +224,6 @@ kbd {
   border-top: 1px solid var(--line);
 }
 
-/* Skip layout and paint for sections far below the fold until they're near. */
-.section:not(#work) {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
-}
-
 .stack-line {
   font-size: var(--step--1);
   color: var(--ink-2);
