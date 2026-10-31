@@ -28,7 +28,7 @@ export const impact = [
     lowerIsBetter: true,
     summary: "Chart load time cut from 1.6s to 0.15s",
     detail:
-      "Switched the trading terminal to server-native intraday bars. Seconds charts went from about 40 sequential requests to one.",
+      "Switched the trading terminal to server-native intraday bars. The case study below replays it.",
     where: "Rupeezy",
   },
   {
@@ -41,20 +41,8 @@ export const impact = [
     lowerIsBetter: false,
     summary: "Website performance score up 35%",
     detail:
-      "CSS purging, lazy-loading below the fold, tree-shaking, code-splitting, nginx caching and a Cloudflare CDN.",
+      "Measured on PageSpeed Insights and GTmetrix.",
     where: "Fyle",
-  },
-  {
-    id: "requests",
-    beforeLabel: "~40 requests",
-    afterLabel: "1 request",
-    before: 40,
-    after: 1,
-    unit: " requests",
-    lowerIsBetter: true,
-    summary: "Seconds charts went from about 40 sequential requests to one",
-    detail: "The same change that made charts 11x faster also removed a long chain of network round trips.",
-    where: "Rupeezy",
   },
   {
     id: "conversion",
@@ -81,10 +69,9 @@ export const jobs = [
     context: "A stock broker whose web trading terminal serves 6,000–10,000 traders a day.",
     points: [
       "Upgraded the TradingView charting engine from v26 to v32, six major versions behind. Fixed every breaking change and rolled it out in 7 staged releases with zero disruption.",
-      "Cut 1-hour chart load time from ~1.6s to ~0.15s by switching to server-native intraday bars.",
       "Helped migrate account opening from Angular 11 to React 19: a 13-step onboarding flow with PAN and KRA auto-fill, selfie, e-sign and resume-from-last-step.",
-      "Building the frontend for FinAI, the company's in-house AI model, as a separate microservice embedded in the website and trading app.",
-      "Built Next.js pages and tools (calculators, market heatmaps, IPO and F&O pages) from components shared with the trading app.",
+      "Building the frontend for FinAI, the company's in-house AI model.",
+      "Built Next.js pages and tools: brokerage calculators, market heatmaps, IPO and F&O pages.",
       "Own production during market hours: pre-market checks, Grafana monitoring, root-causing issues and shipping hotfixes.",
     ],
     stack: ["Next.js", "React 19", "TypeScript", "TradingView", "WebSockets", "AWS", "Grafana"],
@@ -130,7 +117,7 @@ export const jobs = [
     focus: "Web performance",
     context: "An expense management product for finance teams.",
     points: [
-      "Raised the website's performance score by 35% on PageSpeed Insights and GTmetrix.",
+      "Owned website performance: CSS purging, lazy loading below the fold, tree-shaking, code-splitting, nginx caching and a Cloudflare CDN.",
       "Shipped one-click switching between accounts, which brought back churned users and lifted positive reviews by 25%.",
     ],
     stack: ["Webpack", "nginx", "Cloudflare"],

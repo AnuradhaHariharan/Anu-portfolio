@@ -14,7 +14,7 @@ export const nodes = [
     name: "Marketing website",
     tech: "Next.js, SSR and ISR",
     detail:
-      "Mutual fund, IPO, F&O and Stock SIP pages, brokerage calculators, market heatmaps and NSE pre-open data. Server-rendered so pages are fast and indexable.",
+      "Public product and market pages, server-rendered so they load fast and search engines can index them.",
   },
   {
     id: "trading",
@@ -22,7 +22,7 @@ export const nodes = [
     name: "Web trading terminal",
     tech: "React, TradingView, WebSockets",
     detail:
-      "Used by 6,000–10,000 traders a day. Charting engine upgraded from v26 to v32 across 7 staged releases with zero disruption.",
+      "The busiest surface: live prices drawn on TradingView charts, open all through market hours.",
   },
   {
     id: "kyc",
@@ -30,7 +30,7 @@ export const nodes = [
     name: "Account opening",
     tech: "React 19",
     detail:
-      "A 13-step onboarding flow migrated from Angular 11, with PAN and KRA auto-fill, selfie, e-sign and resume-from-last-step.",
+      "The onboarding flow new customers go through. Built as a static React app, separate from the Next.js stack.",
   },
   {
     id: "library",
@@ -45,7 +45,7 @@ export const nodes = [
     name: "FinAI micro-frontend",
     tech: "Separate frontend service",
     detail:
-      "The interface for Rupeezy's in-house AI model, built as its own frontend microservice and embedded in the website and the trading app.",
+      "Its own frontend service, embedded in both the website and the trading app instead of being built twice.",
   },
   {
     id: "data",
@@ -53,7 +53,7 @@ export const nodes = [
     name: "Market data layer",
     tech: "REST and WebSockets",
     detail:
-      "Moving to server-native intraday bars cut chart load from about 1.6s to 0.15s and replaced about 40 sequential requests with one.",
+      "Historical bars over REST and live prices over WebSockets, feeding every chart. Its biggest fix is the case study further down.",
   },
   {
     id: "eks",
@@ -76,7 +76,7 @@ export const nodes = [
     name: "Monitoring",
     tech: "Grafana",
     detail:
-      "Pre-market checks and Grafana dashboards during market hours, root-causing production issues and shipping hotfixes.",
+      "Grafana dashboards watched through market hours, with pre-market checks before the open.",
   },
 ];
 
@@ -95,7 +95,7 @@ export const edges = [
 export const principles = [
   {
     title: "Ship in small, reversible steps",
-    body: "Seven staged pre-production releases for a six-version charting upgrade. Instant-rollback releases for onboarding.",
+    body: "Large upgrades go out in stages through pre-production, and releases can be rolled back instantly.",
   },
   {
     title: "Measure before optimising",
