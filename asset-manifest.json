@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Anu-portfolio/static/css/main.2ec14b80.css",
-    "main.js": "/Anu-portfolio/static/js/main.ad4f9402.js",
+    "main.js": "/Anu-portfolio/static/js/main.ab2c0e10.js",
     "static/css/729.79befcc9.chunk.css": "/Anu-portfolio/static/css/729.79befcc9.chunk.css",
     "static/js/729.68166946.chunk.js": "/Anu-portfolio/static/js/729.68166946.chunk.js",
     "static/css/416.6bf1a34d.chunk.css": "/Anu-portfolio/static/css/416.6bf1a34d.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/406.1c0e809d.chunk.js": "/Anu-portfolio/static/js/406.1c0e809d.chunk.js",
     "index.html": "/Anu-portfolio/index.html",
     "main.2ec14b80.css.map": "/Anu-portfolio/static/css/main.2ec14b80.css.map",
-    "main.ad4f9402.js.map": "/Anu-portfolio/static/js/main.ad4f9402.js.map",
+    "main.ab2c0e10.js.map": "/Anu-portfolio/static/js/main.ab2c0e10.js.map",
     "729.79befcc9.chunk.css.map": "/Anu-portfolio/static/css/729.79befcc9.chunk.css.map",
     "729.68166946.chunk.js.map": "/Anu-portfolio/static/js/729.68166946.chunk.js.map",
     "416.6bf1a34d.chunk.css.map": "/Anu-portfolio/static/css/416.6bf1a34d.chunk.css.map",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.2ec14b80.css",
-    "static/js/main.ad4f9402.js"
+    "static/js/main.ab2c0e10.js"
   ]
 }
