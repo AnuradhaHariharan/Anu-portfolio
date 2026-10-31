@@ -23,7 +23,7 @@ const verdict = (score) => {
   return "These catch out plenty of teams. Play again and the explanations will stick.";
 };
 
-export default function FixTheUI({ startSignal }) {
+export default function FixTheUI({ startSignal, onDestroy }) {
   const [rounds, setRounds] = useState(newGame);
   const [index, setIndex] = useState(0);
   const [choice, setChoice] = useState("");
@@ -205,6 +205,15 @@ export default function FixTheUI({ startSignal }) {
             </div>
           )}
         </div>
+        {onDestroy && (
+          <p className="game-alt">
+            Prefer chaos?{" "}
+            <button type="button" className="link-btn" onClick={onDestroy}>
+              Destroy this page
+            </button>{" "}
+            and shoot it apart letter by letter. It rebuilds itself.
+          </p>
+        )}
       </div>
     </section>
   );

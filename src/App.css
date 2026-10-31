@@ -38,3 +38,26 @@ main:focus {
 .lazy-slot {
   min-height: 40rem;
 }
+
+.footer-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.link-btn {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.game-alt {
+  margin-top: 1.25rem;
+  color: var(--ink-2);
+}

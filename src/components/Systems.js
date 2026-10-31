@@ -1,4 +1,4 @@
-import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { edges, nodes, principles, tiers } from "../data/systems";
 import "./Systems.css";
 
@@ -43,13 +43,15 @@ export default function Systems() {
     setLines(next);
   }, []);
 
-  useLayoutEffect(() => {
-    measure();
+  useEffect(() => {
+    // Measure after paint so drawing the connectors never blocks the page.
+    const first = requestAnimationFrame(measure);
     const ro = "ResizeObserver" in window ? new ResizeObserver(measure) : null;
     if (mapRef.current) ro?.observe(mapRef.current);
     window.addEventListener("resize", measure);
     document.fonts?.ready?.then(measure);
     return () => {
+      cancelAnimationFrame(first);
       ro?.disconnect();
       window.removeEventListener("resize", measure);
     };

@@ -4,9 +4,13 @@ import React, { Suspense, useEffect, useRef, useState } from "react";
  * Renders a placeholder (keeping the section id so links still work) and
  * only loads the real component when it gets near the viewport.
  */
-export default function Deferred({ id, children, minHeight = "40rem" }) {
+export default function Deferred({ id, children, minHeight = "40rem", force = false }) {
   const ref = useRef(null);
   const [show, setShow] = useState(() => typeof window === "undefined" || window.location.hash === `#${id}`);
+
+  useEffect(() => {
+    if (force) setShow(true);
+  }, [force]);
 
   useEffect(() => {
     if (show) return undefined;

@@ -27,16 +27,14 @@ function readStoredTheme() {
   }
 }
 
-/** Theme follows the OS until the visitor picks one, then remembers it. */
+/** Dark by default (the original palette); remembers the visitor's choice. */
 export function useTheme() {
-  const systemDark = useMediaQuery("(prefers-color-scheme: dark)");
   const [stored, setStored] = useState(readStoredTheme);
-  const theme = stored || (systemDark ? "dark" : "light");
+  const theme = stored || "dark";
 
   useEffect(() => {
-    if (stored) document.documentElement.dataset.theme = stored;
-    else delete document.documentElement.dataset.theme;
-  }, [stored]);
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
 
   const toggle = useCallback(() => {
     const next = theme === "dark" ? "light" : "dark";

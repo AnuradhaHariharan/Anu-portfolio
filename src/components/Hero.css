@@ -122,11 +122,11 @@
 }
 
 .bm-m {
-  background: rgba(196, 150, 96, 0.12);
+  background: var(--bm-margin);
 }
 
 .bm-p {
-  background: rgba(120, 150, 110, 0.14);
+  background: var(--bm-padding);
 }
 
 .bm-c {

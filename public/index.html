@@ -8,8 +8,7 @@
       name="description"
       content="Frontend engineer with 2.5+ years building fast, accessible React and Next.js interfaces. Based in Bengaluru."
     />
-    <meta name="theme-color" content="#f2f2ef" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#131517" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#0b0b0b" />
     <meta property="og:title" content="Anuradha Hariharan, Frontend Engineer" />
     <meta
       property="og:description"
@@ -43,7 +42,7 @@
       (function () {
         try {
           var t = localStorage.getItem("theme");
-          if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+          document.documentElement.dataset.theme = t === "light" ? "light" : "dark";
         } catch (e) {}
       })();
     </script>

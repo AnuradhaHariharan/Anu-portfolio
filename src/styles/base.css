@@ -1,23 +1,25 @@
 /* ---------- Tokens ---------- */
 :root {
-  color-scheme: light;
-  --paper: #f2f2ef;
-  --surface: #fafaf8;
-  --ink: #18191c;
-  --ink-2: #53565d;
-  --line: #dcdcd6;
-  --line-strong: #7b7e84;
-  --accent: #1e4d5c;
-  --accent-ink: #ffffff;
-  --accent-soft: #dfe8ea;
-  --mark: #e8dcb5;
-  --good: #2d6a4f;
-  --bad: #a63d32;
+  color-scheme: dark;
+  /* Original portfolio palette */
+  --paper: #0b0b0b;
+  --surface: #141414;
+  --ink: #eaeaea;
+  --ink-2: #b8b8b8;
+  --line: #262626;
+  --line-strong: #7a7a7a;
+  --accent: #00ff66;
+  --accent-ink: #0b0b0b;
+  --accent-soft: rgba(0, 255, 120, 0.12);
+  --ring: rgba(0, 255, 120, 0.25);
+  --mark: #00ff66;
+  --good: #00ff66;
+  --bad: #ff6b6b;
 
   /* DevTools box-model colours, muted */
-  --bm-margin: rgba(196, 150, 96, 0.2);
-  --bm-padding: rgba(120, 150, 110, 0.2);
-  --bm-content: rgba(30, 77, 92, 0.05);
+  --bm-margin: rgba(255, 255, 255, 0.05);
+  --bm-padding: rgba(0, 255, 120, 0.1);
+  --bm-content: rgba(0, 255, 120, 0.04);
 
   --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
   --font-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif;
@@ -39,37 +41,24 @@
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --paper: #131517;
-  --surface: #1b1e21;
-  --ink: #e9e9e5;
-  --ink-2: #a5a9ae;
-  --line: #2e3236;
-  --line-strong: #858a90;
-  --accent: #8fc1cc;
-  --accent-ink: #131517;
-  --accent-soft: #23353a;
-  --mark: #e8dcb5;
-  --good: #7cc4a0;
-  --bad: #f0958a;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --paper: #131517;
-    --surface: #1b1e21;
-    --ink: #e9e9e5;
-    --ink-2: #a5a9ae;
-    --line: #2e3236;
-    --line-strong: #858a90;
-    --accent: #8fc1cc;
-    --accent-ink: #131517;
-    --accent-soft: #23353a;
-    --good: #7cc4a0;
-    --bad: #f0958a;
-  }
+:root[data-theme="light"] {
+  color-scheme: light;
+  --paper: #f4f4f2;
+  --surface: #ffffff;
+  --ink: #0b0b0b;
+  --ink-2: #4a4a4a;
+  --line: #dcdcd8;
+  --line-strong: #767676;
+  --accent: #007a35;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(0, 122, 53, 0.1);
+  --ring: rgba(0, 122, 53, 0.25);
+  --mark: #b7f5cf;
+  --good: #007a35;
+  --bad: #b42318;
+  --bm-margin: rgba(11, 11, 11, 0.05);
+  --bm-padding: rgba(0, 122, 53, 0.12);
+  --bm-content: rgba(0, 122, 53, 0.04);
 }
 
 /* ---------- Reset ---------- */
@@ -135,7 +124,7 @@ select {
 
 ::selection {
   background: var(--mark);
-  color: #14151c;
+  color: #0b0b0b;
 }
 
 /* ---------- Accessibility helpers ---------- */
@@ -235,6 +224,12 @@ kbd {
   border-top: 1px solid var(--line);
 }
 
+/* Skip layout and paint for sections far below the fold until they're near. */
+.section:not(#work) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
 .stack-line {
   font-size: var(--step--1);
   color: var(--ink-2);
@@ -267,14 +262,12 @@ kbd {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 150ms, border-color 150ms, color 150ms;
+  transition: box-shadow 150ms, border-color 150ms;
 }
 
 .btn:hover {
   text-decoration: none;
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--paper);
+  box-shadow: 0 0 0 4px var(--ring);
 }
 
 .btn--ghost {
@@ -284,9 +277,7 @@ kbd {
 }
 
 .btn--ghost:hover {
-  background: transparent;
   border-color: var(--ink);
-  color: var(--ink);
 }
 
 .btn[disabled] {
