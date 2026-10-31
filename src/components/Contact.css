@@ -1,0 +1,103 @@
+.contact-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 56rem) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+.contact-intro {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+}
+
+.contact-photo {
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border-radius: 50%;
+  outline: 2px dashed var(--bm-margin);
+  outline-offset: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.contact-intro p {
+  color: var(--ink-2);
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.contact-links {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.5rem 0 0;
+  font-weight: 700;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding-block: 0.3rem;
+  overflow-wrap: anywhere;
+}
+
+.contact-form,
+.contact-done {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.contact-form .btn {
+  justify-self: start;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-weight: 700;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  border-color: var(--accent);
+  outline-offset: 0;
+}
+
+.field-error {
+  color: var(--bad);
+  font-weight: 600;
+  font-size: var(--step--1);
+}
+
+.contact-done h3 {
+  font-size: var(--step-2);
+}

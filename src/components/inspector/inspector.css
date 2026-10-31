@@ -1,0 +1,213 @@
+.ix-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.ix-margin,
+.ix-padding,
+.ix-outline {
+  position: fixed;
+  border-style: solid;
+}
+
+.ix-margin {
+  border-color: var(--bm-margin);
+}
+
+.ix-padding {
+  border-color: var(--bm-padding);
+  background: var(--bm-content);
+}
+
+.ix-outline {
+  border: 1px dashed #4530d8;
+  mix-blend-mode: multiply;
+}
+
+:root[data-theme="dark"] .ix-outline {
+  border-color: #c9c1ff;
+  mix-blend-mode: normal;
+}
+
+.ix-tip {
+  position: fixed;
+  width: max-content;
+  max-width: min(22rem, calc(100vw - 16px));
+  padding: 0.7rem 0.85rem 0.6rem;
+  border-radius: 10px;
+  background: #14151c;
+  color: #ecedf3;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  box-shadow: 0 12px 30px -12px rgba(20, 21, 28, 0.55);
+}
+
+.ix-tip-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.ix-sel {
+  color: #c9c1ff;
+}
+
+.ix-size {
+  color: #b0b3c4;
+}
+
+.ix-rows {
+  display: grid;
+  gap: 0.15rem;
+  margin: 0;
+}
+
+.ix-rows > div {
+  display: grid;
+  grid-template-columns: 5.2rem 1fr;
+  gap: 0.5rem;
+}
+
+.ix-rows dt {
+  color: #b0b3c4;
+}
+
+.ix-rows dd {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.ix-name {
+  overflow-wrap: anywhere;
+}
+
+.ix-swatch {
+  padding: 0 0.3rem;
+  border-radius: 4px;
+  border: 1px solid #b0b3c4;
+  font-family: var(--font-body);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.ix-badge {
+  padding: 0 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.ix-badge.is-pass {
+  background: #1f7a45;
+  color: #fff;
+}
+
+.ix-badge.is-fail {
+  background: #b3261e;
+  color: #fff;
+}
+
+.ix-label {
+  margin-top: 0.45rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #343745;
+  color: #b0b3c4;
+  font-family: var(--font-body);
+}
+
+/* The hero draws the box model once on load. */
+@media (prefers-reduced-motion: no-preference) {
+  .ix-overlay--intro .ix-margin,
+  .ix-overlay--intro .ix-padding,
+  .ix-overlay--intro .ix-outline {
+    animation: ix-draw 700ms var(--ease) both;
+  }
+  .ix-overlay--intro .ix-padding {
+    animation-delay: 150ms;
+  }
+  .ix-overlay--intro .ix-outline {
+    animation-delay: 300ms;
+  }
+  .ix-overlay--intro .ix-tip {
+    animation: ix-tip 400ms 650ms var(--ease) both;
+  }
+}
+
+@keyframes ix-draw {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes ix-tip {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* Inspect mode bar */
+.ix-bar {
+  position: fixed;
+  left: 50%;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 70;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  padding: 0.6rem 0.6rem 0.6rem 1.1rem;
+  border-radius: 999px;
+  background: #14151c;
+  color: #ecedf3;
+  box-shadow: 0 16px 40px -16px rgba(20, 21, 28, 0.6);
+}
+
+.ix-bar p {
+  font-size: var(--step--1);
+}
+
+.ix-bar .btn {
+  background: #a99cff;
+  border-color: #a99cff;
+  color: #14151c;
+  flex: none;
+}
+
+.ix-bar kbd {
+  background: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+
+@media (max-width: 40rem) {
+  .ix-bar {
+    border-radius: 16px;
+  }
+  .ix-bar-hint {
+    display: none;
+  }
+}
+
+.is-inspecting body {
+  cursor: crosshair;
+}
+
+.is-inspecting body a,
+.is-inspecting body button:not([data-inspector-ui] *):not([data-inspector-ui]) {
+  cursor: crosshair;
+}

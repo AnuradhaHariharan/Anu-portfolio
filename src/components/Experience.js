@@ -1,90 +1,112 @@
-import React from "react";
-import "../styles/Experience.css";
+import React, { useRef, useState } from "react";
+import { jobs, skills } from "../data/content";
+import { useMediaQuery } from "../hooks";
+import "./Experience.css";
 
-const CATEGORIES = [
-  {
-    key: "frontend",
-    title: "Frontend",
-    items: [
-      { name: "React",       image: `${process.env.PUBLIC_URL}/assets/react.png` },
-      { name: "JavaScript",  image: `${process.env.PUBLIC_URL}/assets/icons8-javascript.svg` },
-      { name: "HTML5",       image: `${process.env.PUBLIC_URL}/assets/icons8-html5.svg` },
-      { name: "CSS3",        image: `${process.env.PUBLIC_URL}/assets/icons8-css3.svg` },
-      { name: "Sass",        image: `${process.env.PUBLIC_URL}/assets/icons8-sass-avatar.svg` },
-    ],
-  },
-  {
-    key: "backend",
-    title: "Backend",
-    items: [
-      { name: "Node.js",     image: `${process.env.PUBLIC_URL}/assets/icons8-node-js.svg` },
-      { name: "Express.js",  image: `${process.env.PUBLIC_URL}/assets/icons8-express-js.svg` },
-      { name: "Java",        image: `${process.env.PUBLIC_URL}/assets/icons8-java.svg` },
-    ],
-  },
-  {
-    key: "database",
-    title: "Database",
-    items: [
-      { name: "MongoDB",     image: `${process.env.PUBLIC_URL}/assets/mongodb.svg` },
-      { name: "MySQL",       image: `${process.env.PUBLIC_URL}/assets/logo-mysql-170x115.png` },
-    ],
-  },
-  {
-    key: "tools",
-    title: "Tools",
-    items: [
-      { name: "Git",         image: `${process.env.PUBLIC_URL}/assets/git.png` },
-    ],
-  },
-];
-
+/**
+ * WAI-ARIA tabs with automatic activation: arrow keys move focus and
+ * select. Home/End jump to the first and last role.
+ */
 export default function Experience() {
+  const [selected, setSelected] = useState(0);
+  const tabs = useRef([]);
+  const wide = useMediaQuery("(min-width: 52rem)");
+
+  const onKeyDown = (e, i) => {
+    const last = jobs.length - 1;
+    let next = null;
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") next = i === last ? 0 : i + 1;
+    if (e.key === "ArrowUp" || e.key === "ArrowLeft") next = i === 0 ? last : i - 1;
+    if (e.key === "Home") next = 0;
+    if (e.key === "End") next = last;
+    if (next !== null) {
+      e.preventDefault();
+      setSelected(next);
+      tabs.current[next]?.focus();
+    }
+  };
+
+  const job = jobs[selected];
+
   return (
-    <section id="skills" className="stack-section" aria-labelledby="stack-title">
-      <div className="section-header">
-      <span className="star-container" aria-hidden="true">
-    ★
-  </span>
-      <h2 id="stack-title" className="stack-heading">My Stack</h2>
-      </div>
+    <section id="experience" className="section" aria-labelledby="exp-title">
+      <div className="wrap">
+        <div className="section-head">
+          <h2 id="exp-title">Experience</h2>
+          <p>
+            Four teams since 2024: a stock broker, a SaaS product, a ride-hailing startup and an expense
+            platform. Pick a role to see what I owned there.
+          </p>
+        </div>
 
-      <div className="stack-rows">
-        {CATEGORIES.map((cat) => (
-          <div className="stack-row" key={cat.key}>
-            {/* Fixed, visible label (span to avoid global h3 rules) */}
-            <div className="stack-label-wrap">
-              <span className="stack-label" id={`${cat.key}-label`}>
-                {cat.title}
-              </span>
-            </div>
+        <div className="exp">
+          <div role="tablist" aria-label="Roles" aria-orientation={wide ? "vertical" : "horizontal"} className="exp-tabs">
+            {jobs.map((j, i) => (
+              <button
+                key={j.id}
+                ref={(el) => (tabs.current[i] = el)}
+                role="tab"
+                type="button"
+                id={`tab-${j.id}`}
+                aria-selected={i === selected}
+                aria-controls={`panel-${j.id}`}
+                tabIndex={i === selected ? 0 : -1}
+                className="exp-tab"
+                onClick={() => setSelected(i)}
+                onKeyDown={(e) => onKeyDown(e, i)}
+              >
+                <span className="exp-tab-company">{j.company}</span>
+                <span className="exp-tab-dates">
+                  {j.start} to {j.end}
+                </span>
+              </button>
+            ))}
+          </div>
 
-            {/* Static chip list */}
-            <div className="stack-list" role="group" aria-labelledby={`${cat.key}-label`}>
-              {cat.items.map((item) => (
-                <div className="stack-item" key={`${cat.key}-${item.name}`}>
-                  <span className="stack-icon" aria-hidden="true">
-                    <img
-                      src={item.image}
-                      alt=""
-                      onError={(e) => { e.currentTarget.style.display = "none"; }}
-                    />
-                  </span>
-                  <span className="stack-name">{item.name}</span>
-                </div>
+          <div
+            role="tabpanel"
+            id={`panel-${job.id}`}
+            aria-labelledby={`tab-${job.id}`}
+            tabIndex={0}
+            className="exp-panel"
+            key={job.id}
+          >
+            <h3>
+              {job.title} at {job.company}
+            </h3>
+            <p className="exp-meta">
+              {job.start} to {job.end}. {job.context}
+            </p>
+            <p className="exp-focus">
+              <span>Focus:</span> {job.focus}
+            </p>
+            <ul className="exp-points">
+              {job.points.map((p) => (
+                <li key={p}>{p}</li>
               ))}
-            </div>
-
-            {/* Screen-reader only list (not visible) */}
-            <ul className="sr-only" aria-label={`${cat.title} technologies`}>
-              {cat.items.map((it) => (
-                <li key={`${cat.key}-sr-${it.name}`}>{it.name}</li>
+            </ul>
+            <ul role="list" className="chip-list" aria-label="Tools used">
+              {job.stack.map((s) => (
+                <li className="chip" key={s}>
+                  {s}
+                </li>
               ))}
             </ul>
           </div>
-        ))}
+        </div>
+
+        <div className="toolkit">
+          <h3 id="toolkit-title">Toolkit</h3>
+          <dl className="toolkit-grid" aria-labelledby="toolkit-title">
+            {skills.map((g) => (
+              <div key={g.group}>
+                <dt>{g.group}</dt>
+                <dd>{g.items.join(", ")}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
     </section>
   );
 }
-

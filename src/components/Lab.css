@@ -1,0 +1,104 @@
+.lab-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 56rem) {
+  .lab-grid {
+    grid-template-columns: minmax(15rem, 0.8fr) minmax(0, 1.6fr);
+    align-items: start;
+  }
+}
+
+.lab-controls {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.lab-controls .btn[aria-pressed="true"] {
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.lab-note {
+  margin-top: 0.75rem;
+  color: var(--ink-2);
+}
+
+.lab-stage {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  padding: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.lab-readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+}
+
+.lab-done {
+  color: var(--good);
+  font-weight: 600;
+}
+
+.lab-waterfall {
+  position: relative;
+  height: 6rem;
+  border-radius: var(--radius-s);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 calc(25% - 1px), var(--line) calc(25% - 1px) 25%),
+    var(--paper);
+  overflow: hidden;
+}
+
+.wf {
+  position: absolute;
+  height: 5%;
+  min-height: 3px;
+  border-radius: 2px;
+  background: var(--line-strong);
+  opacity: 0.35;
+}
+
+.wf.is-done {
+  background: var(--accent);
+  opacity: 1;
+}
+
+.lab-chart-wrap {
+  min-height: 9.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.lab-empty {
+  color: var(--ink-2);
+}
+
+.lab-chart {
+  width: 100%;
+  height: auto;
+}
+
+.lab-chart line {
+  stroke-width: 1;
+}
+
+.lab-chart .up rect,
+.lab-chart .up line {
+  fill: var(--good);
+  stroke: var(--good);
+}
+
+.lab-chart .down rect,
+.lab-chart .down line {
+  fill: var(--bad);
+  stroke: var(--bad);
+}

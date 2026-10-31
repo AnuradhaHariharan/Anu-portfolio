@@ -1,0 +1,53 @@
+.rec-list {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+}
+
+@media (min-width: 60rem) {
+  .rec-list {
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .rec-list > li:first-child {
+    grid-row: span 2;
+  }
+}
+
+.rec {
+  height: 100%;
+  display: grid;
+  gap: 1.25rem;
+  align-content: space-between;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.rec-list > li:first-child .rec blockquote p {
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.rec figcaption {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.rec img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rec figcaption > span {
+  display: grid;
+}
+
+.rec-role {
+  color: var(--ink-2);
+  font-size: var(--step--1);
+}

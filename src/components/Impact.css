@@ -1,0 +1,90 @@
+.impact {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+.impact-list {
+  display: grid;
+  margin: 0;
+}
+
+.impact-item {
+  display: grid;
+  gap: 1.25rem 3rem;
+  padding-block: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.impact-item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+@media (min-width: 52rem) {
+  .impact-item {
+    grid-template-columns: minmax(16rem, 1fr) minmax(0, 1.4fr);
+    align-items: center;
+  }
+}
+
+.impact-text {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.impact-text h3 {
+  font-size: var(--step-2);
+  font-variation-settings: "wdth" 90;
+}
+
+.impact-text p {
+  color: var(--ink-2);
+}
+
+.impact-where {
+  font-weight: 600;
+  font-size: var(--step--1);
+}
+
+.bars {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr 6.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--step--1);
+}
+
+.bar-key {
+  color: var(--ink-2);
+}
+
+.bar-val {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-track {
+  height: 0.9rem;
+  border-radius: 4px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  border-radius: 4px;
+}
+
+.bar.is-before {
+  background: var(--line-strong);
+}
+
+.bar.is-after {
+  background: var(--accent);
+}

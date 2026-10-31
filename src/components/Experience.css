@@ -1,0 +1,169 @@
+.exp {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 52rem) {
+  .exp {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    gap: 3rem;
+  }
+}
+
+.exp-tabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 4px;
+  margin: -4px;
+  scrollbar-width: thin;
+}
+
+@media (min-width: 52rem) {
+  .exp-tabs {
+    flex-direction: column;
+    gap: 0;
+    border-left: 2px solid var(--line);
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+    align-self: start;
+  }
+}
+
+.exp-tab {
+  display: grid;
+  gap: 0.1rem;
+  flex: none;
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+}
+
+.exp-tab-company {
+  font-weight: 700;
+}
+
+.exp-tab-dates {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.exp-tab[aria-selected="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.exp-tab[aria-selected="true"] .exp-tab-dates {
+  color: inherit;
+}
+
+@media (min-width: 52rem) {
+  .exp-tab {
+    border: 0;
+    border-radius: 0;
+    background: none;
+    padding: 0.9rem 1.25rem;
+    margin-left: -2px;
+    border-left: 2px solid transparent;
+  }
+
+  .exp-tab:hover {
+    background: var(--surface);
+  }
+
+  .exp-tab[aria-selected="true"] {
+    background: var(--surface);
+    border-left-color: var(--accent);
+    color: var(--ink);
+  }
+
+  .exp-tab[aria-selected="true"] .exp-tab-dates {
+    color: var(--ink-2);
+  }
+}
+
+.exp-panel {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+  min-height: 24rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .exp-panel {
+    animation: panel-in 320ms var(--ease);
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+}
+
+.exp-panel h3 {
+  font-size: var(--step-2);
+}
+
+.exp-meta {
+  color: var(--ink-2);
+}
+
+.exp-focus span {
+  font-weight: 700;
+}
+
+.exp-points {
+  display: grid;
+  gap: 0.6rem;
+  padding-left: 1.2rem;
+  max-width: var(--measure);
+}
+
+.exp-points li::marker {
+  color: var(--accent);
+}
+
+.toolkit {
+  margin-top: clamp(3rem, 7vw, 5rem);
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.toolkit h3 {
+  margin-bottom: 1.25rem;
+}
+
+.toolkit-grid {
+  display: grid;
+  gap: 1rem 2.5rem;
+  margin: 0;
+}
+
+@media (min-width: 44rem) {
+  .toolkit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 70rem) {
+  .toolkit-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.toolkit-grid dt {
+  font-weight: 700;
+}
+
+.toolkit-grid dd {
+  margin: 0.15rem 0 0;
+  color: var(--ink-2);
+}

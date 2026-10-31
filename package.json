@@ -39,7 +39,20 @@
     "deploy": "gh-pages  -d build"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "jsx-a11y/no-redundant-roles": [
+        "warn",
+        {
+          "ul": [
+            "list"
+          ],
+          "ol": [
+            "list"
+          ]
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
