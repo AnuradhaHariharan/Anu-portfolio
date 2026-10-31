@@ -20,6 +20,10 @@
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
+.lab-controls .btn {
+  min-width: 14rem;
+}
+
 .lab-note {
   margin-top: 0.75rem;
   color: var(--ink-2);
@@ -27,9 +31,9 @@
 
 .lab-stage {
   border: 1px solid var(--line);
-  border-radius: var(--radius-m);
+  border-radius: 10px;
   background: var(--surface);
-  padding: 1rem;
+  padding: 1.25rem;
   display: grid;
   gap: 0.9rem;
 }

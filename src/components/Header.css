@@ -26,7 +26,8 @@
   align-items: center;
   gap: 0.6rem;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -34,14 +35,13 @@
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 9px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-size: 0.9rem;
-  outline: 2px dashed var(--bm-margin);
-  outline-offset: 2px;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .main-nav {
@@ -60,12 +60,10 @@
   border-radius: 999px;
   color: var(--ink-2);
   text-decoration: none;
-  font-weight: 600;
 }
 
 .nav-list a:hover {
   color: var(--ink);
-  background: var(--surface);
 }
 
 .nav-list a[aria-current="true"] {
@@ -83,13 +81,14 @@
   grid-auto-flow: column;
   gap: 0.4rem;
   padding: 0 0.85rem;
-  font-weight: 700;
+  border-color: var(--line);
+  font-weight: 600;
 }
 
 .inspect-btn.is-on {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-ink);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
 }
 
 .palette-btn {
@@ -98,7 +97,9 @@
 }
 
 .palette-btn kbd {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  border-color: var(--line);
+  color: var(--ink-2);
 }
 
 .menu-btn {

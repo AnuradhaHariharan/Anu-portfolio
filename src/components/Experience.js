@@ -34,8 +34,8 @@ export default function Experience() {
         <div className="section-head">
           <h2 id="exp-title">Experience</h2>
           <p>
-            Four teams since 2024: a stock broker, a SaaS product, a ride-hailing startup and an expense
-            platform. Pick a role to see what I owned there.
+            Product teams in fintech and SaaS since 2024, plus project-based work. Pick a role to see what I
+            owned there.
           </p>
         </div>
 
@@ -71,27 +71,19 @@ export default function Experience() {
             className="exp-panel"
             key={job.id}
           >
-            <h3>
-              {job.title} at {job.company}
-            </h3>
+            <h3>{job.id === "projects-based" ? `${job.title}, project-based` : `${job.title} at ${job.company}`}</h3>
             <p className="exp-meta">
               {job.start} to {job.end}. {job.context}
-            </p>
-            <p className="exp-focus">
-              <span>Focus:</span> {job.focus}
             </p>
             <ul className="exp-points">
               {job.points.map((p) => (
                 <li key={p}>{p}</li>
               ))}
             </ul>
-            <ul role="list" className="chip-list" aria-label="Tools used">
-              {job.stack.map((s) => (
-                <li className="chip" key={s}>
-                  {s}
-                </li>
-              ))}
-            </ul>
+            <p className="stack-line">
+              <span className="sr-only">Tools used: </span>
+              {job.stack.join(" / ")}
+            </p>
           </div>
         </div>
 

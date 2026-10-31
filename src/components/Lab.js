@@ -98,7 +98,7 @@ export default function Lab() {
     <section id="lab" className="section lab" aria-labelledby="lab-title">
       <div className="wrap">
         <div className="section-head">
-          <h2 id="lab-title">Lab: why fewer requests feel faster</h2>
+          <h2 id="lab-title">Case study: one request instead of forty</h2>
           <p>
             A replay of a fix I shipped. The same chart, loaded the way it used to be and the way it is now. Timings
             match the before and after numbers from production.

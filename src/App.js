@@ -1,19 +1,22 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { Suspense, lazy, startTransition, useCallback, useEffect, useMemo, useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Impact from "./components/Impact";
 import Experience from "./components/Experience";
-import Lab from "./components/Lab";
-import FixTheUI from "./components/game/FixTheUI";
+import Systems from "./components/Systems";
 import Projects from "./components/Projects";
 import Recommendations from "./components/Recommendations";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Deferred from "./components/Deferred";
 import Inspector from "./components/inspector/Inspector";
-import CommandPalette from "./components/CommandPalette";
 import { navLinks, profile } from "./data/content";
 import { useTheme } from "./hooks";
 import "./App.css";
+
+const Lab = lazy(() => import("./components/Lab"));
+const FixTheUI = lazy(() => import("./components/game/FixTheUI"));
+const CommandPalette = lazy(() => import("./components/CommandPalette"));
 
 const goTo = (id) => {
   const el = document.getElementById(id);
@@ -30,8 +33,19 @@ export default function App() {
   const { theme, toggle: toggleTheme } = useTheme();
   const [inspecting, setInspecting] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [paletteLoaded, setPaletteLoaded] = useState(false);
+  useEffect(() => {
+    if (paletteOpen) setPaletteLoaded(true);
+  }, [paletteOpen]);
   const [gameSignal, setGameSignal] = useState(0);
   const [toast, setToast] = useState("");
+  // Paint the hero first, then render the rest of the page in an
+  // interruptible transition so the main thread never blocks for long.
+  const [showRest, setShowRest] = useState(() => !!window.location.hash);
+  useEffect(() => {
+    if (showRest) return;
+    startTransition(() => setShowRest(true));
+  }, [showRest]);
 
   const stopInspect = useCallback(() => setInspecting(false), []);
   const toggleInspect = useCallback(() => setInspecting((v) => !v), []);
@@ -55,13 +69,17 @@ export default function App() {
 
   const commands = useMemo(
     () => [
-      ...navLinks.map((l) => ({
+      ...[{ id: "work", label: "Impact" }, ...navLinks].map((l) => ({
         id: `go-${l.id}`,
         group: "Go to",
         label: l.label,
         run: () => goTo(l.id),
       })),
-      { id: "play", group: "Play", label: "Start Fix the UI", keywords: "game quiz", run: () => setGameSignal((n) => n + 1) },
+      { id: "play", group: "Play", label: "Start Fix the UI", keywords: "game quiz", run: () => {
+          goTo("play");
+          setGameSignal((n) => n + 1);
+        },
+      },
       {
         id: "inspect",
         group: "Tools",
@@ -114,6 +132,7 @@ export default function App() {
         Skip to content
       </a>
       <Header
+        ready={showRest}
         theme={theme}
         onToggleTheme={toggleTheme}
         inspecting={inspecting}
@@ -122,17 +141,30 @@ export default function App() {
       />
       <main id="main" tabIndex={-1}>
         <Hero inspecting={inspecting} onStartInspect={() => setInspecting(true)} />
-        <Impact />
-        <Experience />
-        <Lab />
-        <FixTheUI startSignal={gameSignal} />
-        <Projects />
-        <Recommendations />
-        <Contact />
+        {showRest && (
+          <>
+            <Impact />
+            <Systems />
+            <Experience />
+            <Deferred id="lab" minHeight="34rem">
+              <Lab />
+            </Deferred>
+            <Deferred id="play" minHeight="48rem">
+              <FixTheUI startSignal={gameSignal} />
+            </Deferred>
+            <Projects />
+            <Recommendations />
+            <Contact />
+          </>
+        )}
       </main>
-      <Footer />
+      {showRest && <Footer />}
       <Inspector active={inspecting} onExit={stopInspect} />
-      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} commands={commands} />
+      {(paletteOpen || paletteLoaded) && (
+        <Suspense fallback={null}>
+          <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} commands={commands} />
+        </Suspense>
+      )}
       <div className="toast" role="status" aria-live="polite">
         {toast && <p>{toast}</p>}
       </div>

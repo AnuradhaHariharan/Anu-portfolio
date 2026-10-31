@@ -20,12 +20,13 @@
   gap: 1.25rem;
   align-content: space-between;
   padding: clamp(1.25rem, 3vw, 2rem);
-  border-radius: var(--radius-m);
+  border-radius: 10px;
   background: var(--surface);
   border: 1px solid var(--line);
 }
 
 .rec-list > li:first-child .rec blockquote p {
+  font-family: var(--font-display);
   font-size: var(--step-1);
   line-height: 1.5;
 }

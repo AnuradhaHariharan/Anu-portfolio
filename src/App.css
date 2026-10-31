@@ -34,3 +34,7 @@ main:focus {
   color: var(--paper);
   font-weight: 600;
 }
+
+.lazy-slot {
+  min-height: 40rem;
+}

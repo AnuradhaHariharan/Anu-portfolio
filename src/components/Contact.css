@@ -23,8 +23,6 @@
   object-fit: cover;
   object-position: 50% 20%;
   border-radius: 50%;
-  outline: 2px dashed var(--bm-margin);
-  outline-offset: 6px;
   margin-bottom: 0.75rem;
 }
 
@@ -38,7 +36,7 @@
   display: grid;
   gap: 0.35rem;
   margin: 0.5rem 0 0;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .contact-links a {
@@ -54,7 +52,7 @@
   display: grid;
   gap: 1.25rem;
   padding: clamp(1.25rem, 3vw, 2rem);
-  border-radius: var(--radius-m);
+  border-radius: 10px;
   background: var(--surface);
   border: 1px solid var(--line);
 }
@@ -69,7 +67,7 @@
 }
 
 .field label {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .field input,

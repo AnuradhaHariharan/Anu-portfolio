@@ -1,12 +1,7 @@
-.game {
-  background: var(--surface);
-  border-block: 1px solid var(--line);
-}
-
 .game-card {
-  border: 2px solid var(--ink);
-  border-radius: var(--radius-m);
-  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
   overflow: hidden;
 }
 
@@ -16,8 +11,7 @@
   align-items: center;
   gap: 1rem;
   padding: 0.85rem 1.25rem;
-  border-bottom: 2px solid var(--ink);
-  background: var(--surface);
+  border-bottom: 1px solid var(--line);
 }
 
 .game-progress {
@@ -27,8 +21,8 @@
 }
 
 .pip {
-  width: 1.6rem;
-  height: 0.55rem;
+  width: 1.4rem;
+  height: 0.3rem;
   border-radius: 999px;
   background: var(--line);
 }
@@ -46,7 +40,7 @@
 }
 
 .game-score {
-  font-family: var(--font-mono);
+  font-size: var(--step--1);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
@@ -65,7 +59,7 @@
 
 .game-q {
   font-size: var(--step-2);
-  font-variation-settings: "wdth" 90;
+  font-weight: 400;
   max-width: 34ch;
 }
 
@@ -111,8 +105,8 @@
   margin: 0;
   padding: 0.85rem 1rem;
   border-radius: var(--radius-s);
-  background: #14151c;
-  color: #ecedf3;
+  background: #18191c;
+  color: #e9e9e5;
   font-family: var(--font-mono);
   font-size: 0.82rem;
   line-height: 1.5;
@@ -147,9 +141,9 @@
   gap: 0.25rem 0.75rem;
   align-items: start;
   padding: 0.8rem 1rem;
-  border: 2px solid var(--line);
-  border-radius: 10px;
-  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
   cursor: pointer;
 }
 
@@ -174,15 +168,18 @@
 }
 
 .opt.is-picked {
-  border-color: var(--accent);
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
 }
 
 .opt.is-answer {
   border-color: var(--good);
+  box-shadow: inset 0 0 0 1px var(--good);
 }
 
 .opt.is-wrong {
   border-color: var(--bad);
+  box-shadow: inset 0 0 0 1px var(--bad);
 }
 
 .opt-tag {
@@ -208,9 +205,9 @@ fieldset:disabled .opt {
   gap: 0.6rem;
   justify-items: start;
   padding: 1.25rem;
-  border-radius: var(--radius-m);
-  border-left: 6px solid var(--good);
-  background: var(--surface);
+  border-radius: 8px;
+  border-left: 3px solid var(--good);
+  background: var(--paper);
 }
 
 .feedback.is-wrong {
@@ -220,6 +217,7 @@ fieldset:disabled .opt {
 .feedback h4 {
   font-family: var(--font-display);
   font-size: var(--step-1);
+  font-weight: 500;
 }
 
 .feedback-wcag {

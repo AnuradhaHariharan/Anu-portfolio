@@ -1,0 +1,200 @@
+.sys {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 62rem) {
+  .sys {
+    grid-template-columns: minmax(0, 1.7fr) minmax(16rem, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+.sys-map {
+  position: relative;
+  display: grid;
+  gap: 2.75rem;
+}
+
+.sys-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.sys-lines path {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+  transition: stroke 200ms;
+}
+
+.sys-lines path.is-on {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.sys-tier {
+  position: relative;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.sys-tier-label {
+  position: relative;
+  justify-self: start;
+  padding-right: 0.75rem;
+  background: var(--paper);
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.sys-row {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sys-node {
+  position: relative;
+  display: grid;
+  gap: 0.2rem;
+  align-content: start;
+  min-height: 5.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms, background-color 150ms;
+}
+
+.sys-node:hover {
+  border-color: var(--line-strong);
+}
+
+.sys-node-name {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.sys-node-tech {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.sys-node.is-related {
+  border-color: var(--accent);
+}
+
+.sys-node.is-active {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.sys-node[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.sys-detail {
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+  padding: 1.5rem;
+  border-left: 1px solid var(--line);
+  min-height: 15rem;
+}
+
+.sys-detail h3 {
+  font-size: var(--step-2);
+  font-weight: 400;
+}
+
+.sys-detail-tech {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.sys-detail-links {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.sys-detail-links span {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Small screens: stack nodes and drop the connectors */
+@media (max-width: 44rem) {
+  .sys-row {
+    grid-template-columns: 1fr;
+  }
+  .sys-lines {
+    display: none;
+  }
+  .sys-map {
+    gap: 1.75rem;
+  }
+  .sys-node {
+    min-height: 0;
+  }
+  .sys-detail {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 1.25rem 0 0;
+    min-height: 0;
+  }
+}
+
+.principles {
+  margin-top: clamp(3.5rem, 8vw, 5.5rem);
+}
+
+.principles h3 {
+  font-size: var(--step-2);
+  font-weight: 400;
+  margin-bottom: 1.75rem;
+}
+
+.principles-grid {
+  display: grid;
+  gap: 1.75rem 3rem;
+  margin: 0;
+}
+
+@media (min-width: 46rem) {
+  .principles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.principles-grid > div {
+  padding-top: 1rem;
+  border-top: 1px solid var(--ink);
+}
+
+.principles-grid dt {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.principles-grid dd {
+  margin: 0;
+  color: var(--ink-2);
+  max-width: 46ch;
+}

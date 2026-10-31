@@ -106,13 +106,13 @@ export const jobs = [
     stack: ["Next.js", "Turbopack", "Zustand", "TanStack Query"],
   },
   {
-    id: "zithmi",
-    company: "Zithmi",
-    title: "Frontend Developer (project-based)",
+    id: "projects-based",
+    company: "Project-based roles",
+    title: "Frontend Developer",
     start: "Aug 2024",
     end: "Sep 2025",
     focus: "Real-time logic and internal dashboards",
-    context: "A ride-hailing platform.",
+    context: "Contract frontend work, including the core of a ride-hailing platform.",
     points: [
       "Built a real-time fare engine with surge pricing, luxury tiers and location-based fees.",
       "Automated driver onboarding-to-offboarding workflows and built rider admin tools.",
@@ -213,7 +213,7 @@ export const recommendations = [
 ];
 
 export const navLinks = [
-  { id: "work", label: "Impact" },
+  { id: "systems", label: "Systems" },
   { id: "experience", label: "Experience" },
   { id: "lab", label: "Lab" },
   { id: "play", label: "Play" },

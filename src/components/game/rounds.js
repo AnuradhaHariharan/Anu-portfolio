@@ -34,7 +34,7 @@ export const ROUNDS = [
     wcag: "1.4.3 Contrast (Minimum)",
     explain:
       "Body text needs a contrast ratio of at least 4.5:1 (3:1 for large text). Size helps, but #a8aab3 on white is 2.3:1 and still fails even at 24px.",
-    fix: `.status { color: #464a5c; } /* 8.6:1 */`,
+    fix: `.status { color: #464a5c; } /* 8.8:1 */`,
   },
   {
     id: "icon-button",
@@ -92,7 +92,7 @@ export const ROUNDS = [
     description: "A purple box that looks like a “Pay now” button but is a div with a click handler.",
     visual: (
       <Frame>
-        <rect x="24" y="44" width="150" height="48" rx="24" fill="#4530d8" />
+        <rect x="24" y="44" width="150" height="48" rx="24" fill="#1e4d5c" />
         <T x="99" y="74" fontSize="16" fontWeight="700" fill="#ffffff" textAnchor="middle">Pay now</T>
         <T x="196" y="74" fontSize="13" fill="#464a5c">Tab skips it</T>
       </Frame>
@@ -168,7 +168,7 @@ export const ROUNDS = [
       <Frame>
         <rect x="24" y="30" width="110" height="80" rx="10" fill="#eef0f6" stroke="#6f7388" strokeDasharray="4 3" />
         <T x="34" y="54" fontSize="11" fill="#464a5c">320px screen</T>
-        <rect x="40" y="62" width="260" height="38" rx="6" fill="#e2defc" stroke="#4530d8" />
+        <rect x="40" y="62" width="260" height="38" rx="6" fill="#dfe8ea" stroke="#1e4d5c" />
         <T x="50" y="86" fontSize="12" fill="#14151c">width: 600px card overflows →</T>
       </Frame>
     ),
@@ -193,7 +193,7 @@ export const ROUNDS = [
       <Frame>
         <rect x="24" y="28" width="272" height="66" rx="10" fill="#eef0f6" />
         <T x="40" y="58" fontSize="14" fill="#14151c">“Shipped the redesign in two…”</T>
-        <circle cx="140" cy="112" r="4" fill="#4530d8" />
+        <circle cx="140" cy="112" r="4" fill="#1e4d5c" />
         <circle cx="156" cy="112" r="4" fill="#c9ccd8" />
         <circle cx="172" cy="112" r="4" fill="#c9ccd8" />
       </Frame>

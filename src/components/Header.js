@@ -20,8 +20,8 @@ export const ThemeIcon = ({ dark }) =>
     </svg>
   );
 
-export default function Header({ theme, onToggleTheme, inspecting, onToggleInspect, onOpenPalette }) {
-  const active = useActiveSection(ids);
+export default function Header({ ready = true, theme, onToggleTheme, inspecting, onToggleInspect, onOpenPalette }) {
+  const active = useActiveSection(ids, ready);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuBtn = useRef(null);
   const dark = theme === "dark";
@@ -43,7 +43,7 @@ export default function Header({ theme, onToggleTheme, inspecting, onToggleInspe
       <div className="wrap header-row">
         <a className="brand" href="#top" aria-label={`${profile.name}, back to top`}>
           <span className="brand-mark" aria-hidden="true">
-            AH
+            A
           </span>
           <span className="brand-name">{profile.name}</span>
         </a>

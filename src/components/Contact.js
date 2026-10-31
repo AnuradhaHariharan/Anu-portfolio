@@ -1,16 +1,56 @@
-import React, { useEffect, useRef } from "react";
-import { useForm, ValidationError } from "@formspree/react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { profile } from "../data/content";
 import "./Contact.css";
 
+const FORM_ENDPOINT = "https://formspree.io/f/xldrbgpo";
+
 export default function Contact() {
-  const [state, handleSubmit] = useForm("xldrbgpo");
+  // Plain fetch to Formspree: same endpoint, without the SDK's payment code.
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [errors, setErrors] = useState({});
   const doneRef = useRef(null);
+  const errorRef = useRef(null);
 
   useEffect(() => {
-    if (state.succeeded) doneRef.current?.focus();
-  }, [state.succeeded]);
+    if (status === "sent") doneRef.current?.focus();
+    if (status === "error") errorRef.current?.focus();
+  }, [status]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const next = {};
+    if (!String(data.get("name") || "").trim()) next.name = "Enter your name.";
+    const email = String(data.get("email") || "").trim();
+    if (!email) next.email = "Enter your email address.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = "Enter an email address like name@example.com.";
+    if (!String(data.get("message") || "").trim()) next.message = "Write a short message.";
+    setErrors(next);
+    if (Object.keys(next).length) {
+      form.querySelector(`[name="${Object.keys(next)[0]}"]`)?.focus();
+      return;
+    }
+    setStatus("sending");
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } });
+      setStatus(res.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const fieldProps = (name) => ({
+    "aria-invalid": errors[name] ? "true" : undefined,
+    "aria-describedby": errors[name] ? `${name}-error` : undefined,
+  });
+  const FieldError = ({ name }) =>
+    errors[name] ? (
+      <p id={`${name}-error`} className="field-error">
+        {errors[name]}
+      </p>
+    ) : null;
 
   return (
     <section id="contact" className="section contact" aria-labelledby="contact-title">
@@ -57,7 +97,7 @@ export default function Contact() {
           </ul>
         </div>
 
-        {state.succeeded ? (
+        {status === "sent" ? (
           <div className="contact-done" role="status">
             <h3 ref={doneRef} tabIndex={-1}>
               Message sent.
@@ -65,37 +105,29 @@ export default function Contact() {
             <p>Thanks for reaching out. I will get back to you soon.</p>
           </div>
         ) : (
-          <form className="contact-form" onSubmit={handleSubmit} noValidate={false}>
+          <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <div className="field">
               <label htmlFor="name">Your name</label>
-              <input id="name" name="name" type="text" autoComplete="name" required />
+              <input id="name" name="name" type="text" autoComplete="name" required {...fieldProps("name")} />
+              <FieldError name="name" />
             </div>
             <div className="field">
               <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                aria-describedby="email-error"
-              />
-              <ValidationError id="email-error" className="field-error" prefix="Email" field="email" errors={state.errors} />
+              <input id="email" name="email" type="email" autoComplete="email" required {...fieldProps("email")} />
+              <FieldError name="email" />
             </div>
             <div className="field">
               <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" rows="5" required aria-describedby="message-error" />
-              <ValidationError
-                id="message-error"
-                className="field-error"
-                prefix="Message"
-                field="message"
-                errors={state.errors}
-              />
+              <textarea id="message" name="message" rows="5" required {...fieldProps("message")} />
+              <FieldError name="message" />
             </div>
-            <ValidationError className="field-error" errors={state.errors} />
-            <button type="submit" className="btn" disabled={state.submitting}>
-              {state.submitting ? "Sending…" : "Send message"}
+            {status === "error" && (
+              <p ref={errorRef} tabIndex={-1} className="field-error" role="alert">
+                The message didn't send. Check your connection and try again, or email {profile.email}.
+              </p>
+            )}
+            <button type="submit" className="btn" disabled={status === "sending"}>
+              {status === "sending" ? "Sending…" : "Send message"}
             </button>
           </form>
         )}

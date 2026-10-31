@@ -38,14 +38,14 @@
   min-height: 44px;
   padding: 0.6rem 1rem;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
+  border-radius: 6px;
+  background: transparent;
   text-align: left;
   cursor: pointer;
 }
 
 .exp-tab-company {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .exp-tab-dates {
@@ -54,9 +54,8 @@
 }
 
 .exp-tab[aria-selected="true"] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-ink);
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
 }
 
 .exp-tab[aria-selected="true"] .exp-tab-dates {
@@ -73,14 +72,14 @@
     border-left: 2px solid transparent;
   }
 
-  .exp-tab:hover {
-    background: var(--surface);
+  .exp-tab:hover .exp-tab-company {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 
   .exp-tab[aria-selected="true"] {
-    background: var(--surface);
-    border-left-color: var(--accent);
-    color: var(--ink);
+    border-left-color: var(--ink);
+    box-shadow: none;
   }
 
   .exp-tab[aria-selected="true"] .exp-tab-dates {
@@ -110,6 +109,7 @@
 
 .exp-panel h3 {
   font-size: var(--step-2);
+  font-weight: 400;
 }
 
 .exp-meta {
@@ -128,7 +128,7 @@
 }
 
 .exp-points li::marker {
-  color: var(--accent);
+  color: var(--line-strong);
 }
 
 .toolkit {
@@ -160,7 +160,7 @@
 }
 
 .toolkit-grid dt {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .toolkit-grid dd {

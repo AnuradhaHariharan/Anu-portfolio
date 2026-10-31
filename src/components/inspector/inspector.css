@@ -22,13 +22,7 @@
 }
 
 .ix-outline {
-  border: 1px dashed #4530d8;
-  mix-blend-mode: multiply;
-}
-
-:root[data-theme="dark"] .ix-outline {
-  border-color: #c9c1ff;
-  mix-blend-mode: normal;
+  border: 1px dashed var(--accent);
 }
 
 .ix-tip {
@@ -37,8 +31,8 @@
   max-width: min(22rem, calc(100vw - 16px));
   padding: 0.7rem 0.85rem 0.6rem;
   border-radius: 10px;
-  background: #14151c;
-  color: #ecedf3;
+  background: #18191c;
+  color: #e9e9e5;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   line-height: 1.45;
@@ -54,7 +48,7 @@
 }
 
 .ix-sel {
-  color: #c9c1ff;
+  color: #8fc1cc;
 }
 
 .ix-size {
@@ -105,12 +99,12 @@
 }
 
 .ix-badge.is-pass {
-  background: #1f7a45;
+  background: #2d6a4f;
   color: #fff;
 }
 
 .ix-badge.is-fail {
-  background: #b3261e;
+  background: #a63d32;
   color: #fff;
 }
 
@@ -171,9 +165,9 @@
   width: max-content;
   max-width: calc(100vw - 2rem);
   padding: 0.6rem 0.6rem 0.6rem 1.1rem;
-  border-radius: 999px;
-  background: #14151c;
-  color: #ecedf3;
+  border-radius: 10px;
+  background: #18191c;
+  color: #e9e9e5;
   box-shadow: 0 16px 40px -16px rgba(20, 21, 28, 0.6);
 }
 
@@ -182,9 +176,9 @@
 }
 
 .ix-bar .btn {
-  background: #a99cff;
-  border-color: #a99cff;
-  color: #14151c;
+  background: #e9e9e5;
+  border-color: #e9e9e5;
+  color: #18191c;
   flex: none;
 }
 

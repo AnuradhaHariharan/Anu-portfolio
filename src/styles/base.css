@@ -1,25 +1,25 @@
 /* ---------- Tokens ---------- */
 :root {
   color-scheme: light;
-  --paper: #eef0f6;
-  --surface: #ffffff;
-  --ink: #14151c;
-  --ink-2: #464a5c;
-  --line: #d3d6e2;
-  --line-strong: #6f7388;
-  --accent: #4530d8;
+  --paper: #f2f2ef;
+  --surface: #fafaf8;
+  --ink: #18191c;
+  --ink-2: #53565d;
+  --line: #dcdcd6;
+  --line-strong: #7b7e84;
+  --accent: #1e4d5c;
   --accent-ink: #ffffff;
-  --accent-soft: #e2defc;
-  --mark: #ffd84d;
-  --good: #1f7a45;
-  --bad: #b3261e;
+  --accent-soft: #dfe8ea;
+  --mark: #e8dcb5;
+  --good: #2d6a4f;
+  --bad: #a63d32;
 
-  /* DevTools box-model colours, used by the inspector overlay */
-  --bm-margin: rgba(246, 178, 107, 0.45);
-  --bm-padding: rgba(181, 201, 122, 0.45);
-  --bm-content: rgba(111, 168, 220, 0.16);
+  /* DevTools box-model colours, muted */
+  --bm-margin: rgba(196, 150, 96, 0.2);
+  --bm-padding: rgba(120, 150, 110, 0.2);
+  --bm-content: rgba(30, 77, 92, 0.05);
 
-  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
   --font-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif;
   --font-mono: "Atkinson Hyperlegible Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
@@ -28,8 +28,8 @@
   --step-0: 1.0625rem;
   --step-1: 1.33rem;
   --step-2: 1.66rem;
-  --step-3: clamp(1.9rem, 3.2vw, 2.6rem);
-  --step-4: clamp(2.6rem, 7.4vw, 6.2rem);
+  --step-3: clamp(2rem, 3.4vw, 2.75rem);
+  --step-4: clamp(2.5rem, 5vw, 4.4rem);
 
   --measure: 66ch;
   --page: 74rem;
@@ -41,34 +41,34 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #16171d;
-  --surface: #20222b;
-  --ink: #ecedf3;
-  --ink-2: #b0b3c4;
-  --line: #343745;
-  --line-strong: #8b8fa5;
-  --accent: #a99cff;
-  --accent-ink: #14151c;
-  --accent-soft: #2d2852;
-  --mark: #ffd84d;
-  --good: #6fd29a;
-  --bad: #ff8a80;
+  --paper: #131517;
+  --surface: #1b1e21;
+  --ink: #e9e9e5;
+  --ink-2: #a5a9ae;
+  --line: #2e3236;
+  --line-strong: #858a90;
+  --accent: #8fc1cc;
+  --accent-ink: #131517;
+  --accent-soft: #23353a;
+  --mark: #e8dcb5;
+  --good: #7cc4a0;
+  --bad: #f0958a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --paper: #16171d;
-    --surface: #20222b;
-    --ink: #ecedf3;
-    --ink-2: #b0b3c4;
-    --line: #343745;
-    --line-strong: #8b8fa5;
-    --accent: #a99cff;
-    --accent-ink: #14151c;
-    --accent-soft: #2d2852;
-    --good: #6fd29a;
-    --bad: #ff8a80;
+    --paper: #131517;
+    --surface: #1b1e21;
+    --ink: #e9e9e5;
+    --ink-2: #a5a9ae;
+    --line: #2e3236;
+    --line-strong: #858a90;
+    --accent: #8fc1cc;
+    --accent-ink: #131517;
+    --accent-soft: #23353a;
+    --good: #7cc4a0;
+    --bad: #f0958a;
   }
 }
 
@@ -179,20 +179,20 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.015em;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
 h2 {
   font-size: var(--step-3);
-  font-variation-settings: "wdth" 88;
 }
 
 h3 {
   font-size: var(--step-1);
-  line-height: 1.25;
+  font-weight: 500;
+  line-height: 1.3;
 }
 
 p {
@@ -231,7 +231,13 @@ kbd {
 }
 
 .section {
-  padding-block: clamp(4rem, 10vw, 7.5rem);
+  padding-block: clamp(4.5rem, 11vw, 8.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.stack-line {
+  font-size: var(--step--1);
+  color: var(--ink-2);
 }
 
 .section-head {
@@ -242,9 +248,8 @@ kbd {
 
 .section-head p {
   color: var(--ink-2);
-  font-size: var(--step-1);
-  line-height: 1.45;
-  max-width: 52ch;
+  font-size: var(--step-0);
+  max-width: 54ch;
 }
 
 /* ---------- Buttons ---------- */
@@ -254,24 +259,22 @@ kbd {
   justify-content: center;
   gap: 0.5rem;
   min-height: 44px;
-  padding: 0.6rem 1.15rem;
-  border: 2px solid var(--accent);
-  border-radius: 999px;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
   background: var(--accent);
   color: var(--accent-ink);
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 150ms var(--ease), background-color 150ms;
+  transition: background-color 150ms, border-color 150ms, color 150ms;
 }
 
 .btn:hover {
   text-decoration: none;
-  transform: translateY(-1px);
-}
-
-.btn:active {
-  transform: translateY(1px);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
 }
 
 .btn--ghost {
@@ -281,7 +284,9 @@ kbd {
 }
 
 .btn--ghost:hover {
+  background: transparent;
   border-color: var(--ink);
+  color: var(--ink);
 }
 
 .btn[disabled] {
@@ -296,15 +301,16 @@ kbd {
   min-width: 44px;
   min-height: 44px;
   padding: 0 0.6rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
   color: var(--ink);
   cursor: pointer;
 }
 
 .icon-btn:hover {
-  border-color: var(--line-strong);
+  border-color: var(--line);
+  background: var(--surface);
 }
 
 .chip-list {

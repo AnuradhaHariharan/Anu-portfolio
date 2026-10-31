@@ -31,7 +31,7 @@ export default function Impact() {
       <div className="wrap">
         <div className="section-head">
           <h2 id="impact-title">What my work changed</h2>
-          <p>Measured in production, on products real people use every day.</p>
+          <p>Measured in production, before and after.</p>
         </div>
         <ul role="list" className="impact-list">
           {impact.map((item) => (

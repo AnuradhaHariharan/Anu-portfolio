@@ -83,34 +83,25 @@ export default function Hero({ inspecting, onStartInspect }) {
           onFocus={follow}
           onPointerLeave={() => setTarget(titleRef.current)}
         >
-          <p className="hero-hello">Hi, I'm Anuradha.</p>
+          <p className="hero-hello">Anuradha Hariharan, frontend engineer</p>
           <h1 id="hero-title" ref={titleRef} className="hero-title">
-            I build interfaces that load fast and work for everyone.
+            I design frontend systems that stay fast and accessible as they grow.
           </h1>
           <p className="hero-sub">
-            Frontend engineer with {profile.experience} shipping React and Next.js to production. I care about
-            load times, keyboard users and screen readers as much as the pixels.
+            {profile.experience} building React and Next.js products: shared component libraries, real-time trading
+            interfaces, micro-frontends and the releases behind them. Currently at Rupeezy in Bengaluru.
           </p>
-          <p className="hero-now">Currently a software developer at Rupeezy in Bengaluru.</p>
           <div className="hero-actions">
             <button type="button" className="btn" onClick={onStartInspect} data-inspector-ui>
               Inspect this page
             </button>
-            <a className="btn btn--ghost" href="#experience">
-              See my experience
-            </a>
             <a className="hero-resume" href={profile.resume} download>
-              Download resume (PDF, 120 KB)
+              Download resume
             </a>
           </div>
         </div>
 
         <div className="hero-panel" role="group" aria-label="Element inspector preview">
-          <div className="panel-bar" aria-hidden="true">
-            <span>Elements</span>
-            <span className="is-active">Computed</span>
-            <span>Accessibility</span>
-          </div>
           {info ? (
             <div className="panel-body">
               <p className="panel-sel">
@@ -118,9 +109,7 @@ export default function Hero({ inspecting, onStartInspect }) {
               </p>
               <BoxModel box={info.box} width={info.width} height={info.height} />
               <InfoList info={info} className="ix-rows panel-rows" />
-              <p className="panel-hint">
-                Point at anything on the left to inspect it. Turn on inspect mode to explore the whole page.
-              </p>
+              <p className="panel-hint">Point at any text on the left to inspect it.</p>
             </div>
           ) : (
             <div className="panel-body panel-loading">Measuring…</div>

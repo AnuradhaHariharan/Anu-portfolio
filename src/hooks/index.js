@@ -72,9 +72,10 @@ export function useStoredState(key, initial) {
 }
 
 /** Which section is currently in view, for the nav's aria-current. */
-export function useActiveSection(ids) {
+export function useActiveSection(ids, ready = true) {
   const [active, setActive] = useState(null);
   useEffect(() => {
+    if (!ready) return undefined;
     const els = ids.map((id) => document.getElementById(id)).filter(Boolean);
     if (!els.length || !("IntersectionObserver" in window)) return undefined;
     const io = new IntersectionObserver(
@@ -86,6 +87,6 @@ export function useActiveSection(ids) {
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [ids]);
+  }, [ids, ready]);
   return active;
 }
